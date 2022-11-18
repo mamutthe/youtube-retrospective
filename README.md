@@ -3,6 +3,6 @@ Ferramenta que analisa seu histórico do YouTube e Youtube Music e mostra inform
 
 ---
 
-- Feito com ReactJS, Tailwind CSS e Chakra UI
+- Feito com NextJS, Tailwind CSS e Chakra UI
 
 - Inspirado no Spotify Wrapped e Youtube Music Recap
