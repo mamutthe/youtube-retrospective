@@ -1,10 +1,13 @@
 export interface ytVideoTYPE {
   header: string;
   title: string;
-  titleUrl: string;
-  subtitles: Array<{}>;
+  titleUrl?: string;
+  subtitles?: Array<{}>;
   time: string;
-  productus: string[];
+  products: string[];
+  details?: Array<{
+    name: string;
+  }>;
   activityControls: string[];
 }
 
