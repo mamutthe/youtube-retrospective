@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { BaseCard } from '../BaseCard/BaseCard';
 import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTransparentCard';
 
-export function MostWatchedVideoCard() {
+export function MostWatchedChannel() {
   const mostWatchedChannel = 'Web Diva Tulla Luana';
   const channelLink = 'https://www.youtube.com/@PQPWEBDIVATULLALUANA;';
   const mostWatchedChannelTime = 150;
 
   return (
-    <BaseCard height={40} width={24} backgroundImg={''}>
-      <div className="flex items-center justify-center space-y-6 flex-col bg-gradient-to-r from-indigo-500 to-violet-600 w-full h-full rounded-2xl">
+    <BaseCard height={40} width={24}>
+      <div className="flex items-center justify-center space-y-6 flex-col bg-gradient-to-r from-indigo-500 to-violet-600 w-full h-full rounded-2xl px-2">
         <span className="mb-3 mt-1 text-slate-200 font-medium text-[1.3rem] text-center">
           Your most watched channel was
         </span>
@@ -27,7 +27,7 @@ export function MostWatchedVideoCard() {
             {mostWatchedChannel}
           </span>
         </a>
-        <RoundedTransparentCard className='flex-col mx-4 space-y-1'>
+        <RoundedTransparentCard className="flex-col mx-4 space-y-1">
           <span className="text-slate-800 font-medium text-3xl text-center p-2">
             You watched it for
           </span>

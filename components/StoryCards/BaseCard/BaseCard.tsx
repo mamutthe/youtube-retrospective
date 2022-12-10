@@ -1,27 +1,18 @@
 import React from 'react';
 
 type BaseCardProps = {
-  width: number;
-  height: number;
-  children: React.ReactNode;
-  backgroundImg: string;
+  className?: string;
+  children?: React.ReactNode;
 };
 
 export const BaseCard: React.FC<BaseCardProps> = ({
-  width,
-  height,
-  backgroundImg,
+  className,
   children,
 }) => {
   return (
     <>
-      <div style={{ height: `${height}rem`, width: `${width}rem` }}>
-        <div
-          className="h-full w-full rounded-2xl"
-          style={{ backgroundImage: `url(${backgroundImg})` }}
-        >
+      <div className={`rounded-2xl h-[40rem] w-[24rem] ${className}`}>
           {children}
-        </div>
       </div>
     </>
   );
