@@ -27,7 +27,7 @@ export function MostWatchedChannel() {
             {mostWatchedChannel}
           </span>
         </a>
-        <RoundedTransparentCard className="flex-col mx-4 space-y-1">
+        <RoundedTransparentCard className='flex-col mx-4 space-y-1'>
           <span className="text-slate-800 font-medium text-3xl text-center p-2">
             You watched it for
           </span>

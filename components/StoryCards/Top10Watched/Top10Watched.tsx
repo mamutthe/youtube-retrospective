@@ -22,8 +22,7 @@ const mostWatchedChannel = mostWatchedChannelList.at(0)?.channel;
 export function Top10Watched() {
   return (
     <>
-      <BaseCard height={40} width={24} backgroundImg={""}>
-        <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-sm bg-orange bg-size h-full w-full rounded-2xl grid grid-row-3 p-1 pt-6">
+      <BaseCard className='bg-gradient-to-r from-amber-500 to-orange-500 text-sm bg-orange bg-size h-full w-full grid grid-row-3 p-1 pt-6'>
           <div className="flex flex-col items-center space-y-4">
             <span className="font-medium text-slate-100 text-lg">
               Your Top 10 most Watched Channels were
@@ -49,7 +48,6 @@ export function Top10Watched() {
               </RoundedTransparentCard>
             ))}
           </div>
-        </div>
       </BaseCard>
     </>
   );

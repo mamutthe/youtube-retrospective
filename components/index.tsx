@@ -1,8 +1,12 @@
 export { AnimatedTitle } from './AnimatedTitle/AnimatedTitle';
+export { FeaturedStatsCard } from './FeaturedStatsCard';
 export { Paragraph } from './Text/Paragraph';
 export { GradientButton } from './GradientButton/GradientButton';
 export { RoundedTransparentCard } from './RoundedTransparentCard/RoundedTransparentCard';
 export { BaseCard } from './StoryCards/BaseCard/BaseCard';
 export { Top10Watched } from './StoryCards/Top10Watched/Top10Watched';
 export { MostWatchedChannel } from './StoryCards/MostWatchedChannel/MostWatchedChannel';
-export { MostWatchedVideos } from './StoryCards/MostWatchedVideos';
+export { MostWatchedVideos } from './StoryCards/MostWatchedVideos/MostWatchedVideos';
+export { MostListenedSongsCard } from './StoryCards/MostListenedSongsCard/MostListenedSongsCard';
+export { TopArtists } from './StoryCards/TopArtists/TopArtists';
+export { TopMonthCard } from './StoryCards/TopMonthCard';
