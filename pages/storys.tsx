@@ -1,9 +1,9 @@
-import {MostWatchedChannel, MostWatchedVideos, Top10Watched, MostListenedSongsCard, TopArtists, TopMonthCard } from '../components';
+import {MostWatchedChannel, MostWatchedVideos, TopChannelsCard, MostListenedSongsCard, TopArtists, TopMonthCard } from '../components';
 
 export default function Storys() {
   return (
     <>
-        <Top10Watched />
+        <TopChannelsCard />
         <MostWatchedChannel />
         <MostWatchedVideos  />
         <MostListenedSongsCard />

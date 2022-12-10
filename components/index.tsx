@@ -4,7 +4,7 @@ export { Paragraph } from './Text/Paragraph';
 export { GradientButton } from './GradientButton/GradientButton';
 export { RoundedTransparentCard } from './RoundedTransparentCard/RoundedTransparentCard';
 export { BaseCard } from './StoryCards/BaseCard/BaseCard';
-export { Top10Watched } from './StoryCards/Top10Watched/Top10Watched';
+export { TopChannelsCard } from './StoryCards/TopChannelsCard/TopChannelsCard';
 export { MostWatchedChannel } from './StoryCards/MostWatchedChannel/MostWatchedChannel';
 export { MostWatchedVideos } from './StoryCards/MostWatchedVideos/MostWatchedVideos';
 export { MostListenedSongsCard } from './StoryCards/MostListenedSongsCard/MostListenedSongsCard';
