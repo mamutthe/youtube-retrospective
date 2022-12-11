@@ -1,9 +1,9 @@
-import ytChannelPic from '/workspaces/yt-history-stats/components/StoryCards/MostWatchedChannel/ytChannelPic.jpg';
+import ytChannelPic from '/workspaces/yt-history-stats/components/StoryCards/MostWatchedChannelCard/ytChannelPic.jpg';
 import Image from 'next/image';
 import { BaseCard } from '../BaseCard/BaseCard';
 import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTransparentCard';
 
-export function MostWatchedChannel() {
+export function MostWatchedChannelCard() {
   const mostWatchedChannel = 'Web Diva Tulla Luana';
   const channelLink = 'https://www.youtube.com/@PQPWEBDIVATULLALUANA;';
   const mostWatchedChannelTime = 150;
@@ -13,7 +13,7 @@ export function MostWatchedChannel() {
       <p className="text-slate-200 font-medium text-2xl mt-7">
         Your most watched channel was
       </p>
-      
+
       <div>
         <a
           className="flex items-center flex-col"

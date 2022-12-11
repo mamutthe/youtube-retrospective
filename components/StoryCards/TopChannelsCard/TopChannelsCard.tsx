@@ -1,6 +1,6 @@
 import { BaseCard } from '../BaseCard/BaseCard';
 import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTransparentCard';
-import ytChannelPic from 'components/StoryCards/MostWatchedChannel/ytChannelPic.jpg';
+import ytChannelPic from 'components/StoryCards/MostWatchedChannelCard/ytChannelPic.jpg';
 import Image from 'next/image';
 
 const mostWatchedChannelsList = [
