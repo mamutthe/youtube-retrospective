@@ -6,7 +6,7 @@ export { RoundedTransparentCard } from './RoundedTransparentCard/RoundedTranspar
 export { BaseCard } from './StoryCards/BaseCard/BaseCard';
 export { TopChannelsCard } from './StoryCards/TopChannelsCard/TopChannelsCard';
 export { MostWatchedChannelCard } from './StoryCards/MostWatchedChannelCard/MostWatchedChannelCard';
-export { MostWatchedVideos } from './StoryCards/MostWatchedVideos/MostWatchedVideos';
+export { MostWatchedVideosCard } from './StoryCards/MostWatchedVideosCard/MostWatchedVideosCard';
 export { MostListenedSongsCard } from './StoryCards/MostListenedSongsCard/MostListenedSongsCard';
-export { TopArtists } from './StoryCards/TopArtists/TopArtists';
+export { TopArtistsCard } from './StoryCards/TopArtistsCard/TopArtistsCard';
 export { TopMonthCard } from './StoryCards/TopMonthCard';

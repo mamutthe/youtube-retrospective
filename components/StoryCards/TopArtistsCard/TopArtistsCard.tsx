@@ -1,8 +1,8 @@
 import { BaseCard } from '../BaseCard/BaseCard';
 import { FeaturedStatsCard } from '../../FeaturedStatsCard';
-import ytChannelPic from '/workspaces/yt-history-stats/components/StoryCards/MostWatchedVideos/ytChannelPic.jpg';
+import ytChannelPic from '/workspaces/yt-history-stats/public/picExample.jpg';
 
-export function TopArtists() {
+export function TopArtistsCard() {
   const TopArtists = [
     {
       name: 'Lady Gaga',

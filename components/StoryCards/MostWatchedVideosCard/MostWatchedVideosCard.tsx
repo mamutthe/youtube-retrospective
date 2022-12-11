@@ -2,9 +2,9 @@ import React from 'react';
 import { BaseCard } from '../BaseCard/BaseCard';
 import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTransparentCard';
 import Image from 'next/image';
-import ytChannelPic from '/workspaces/yt-history-stats/components/StoryCards/MostWatchedVideos/ytChannelPic.jpg';
+import ytChannelPic from '/workspaces/yt-history-stats/public/picExample.jpg';
 
-export function MostWatchedVideos() {
+export function MostWatchedVideosCard() {
   const MostWatchedVideos = [
     {
       title: 'O Zelador do Meu Condomínio Me Fez Ter Uma Crise',

@@ -1,4 +1,4 @@
-import ytChannelPic from '/workspaces/yt-history-stats/components/StoryCards/MostWatchedChannelCard/ytChannelPic.jpg';
+import ytChannelPic from '/workspaces/yt-history-stats/public/picExample.jpg';
 import Image from 'next/image';
 import { BaseCard } from '../BaseCard/BaseCard';
 import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTransparentCard';
