@@ -33,7 +33,7 @@ export function MostListenedSongsCard() {
     },
   ];
   return (
-    <BaseCard className="flex items-center justify-center flex-col space-y-4 bg-gradient-to-r from-pink-500 to-rose-800 px-4 py-1">
+    <BaseCard className="flex items-center justify-center flex-col space-y-4 bg-gradient-to-r from-pink-500 to-rose-700 px-4 py-1">
       <span className="text-slate-200 font-medium text-2xl mb-4">
         Most Listened Songs
       </span>
