@@ -1,29 +1,30 @@
-import { setHistory } from './getHistory.js';
-import { historyTYPE, ytVideoTYPE } from './types';
+import { history } from './doHistory';
+import { historyTYPE, ytVideoTYPE, mostViewedVideosTYPE } from './types';
 
-const history: historyTYPE = await setHistory();
+function geViewedVideosList(history: historyTYPE): Array<mostViewedVideosTYPE> {
+  const viewedVideosList: Array<mostViewedVideosTYPE> = history.map(
+    (ytVideo: ytVideoTYPE) => {
+      const videoInfo: mostViewedVideosTYPE = {
+        title: ytVideo.title,
+        titleUrl: ytVideo.titleUrl,
+        views: 0,
+      };
+      return videoInfo;
+    }
+  );
 
-function getTitles(history: historyTYPE): string[] {
-  const listOfTitles = history.map((ytVideo: ytVideoTYPE) => {
-    const title = ytVideo.title;
-    return title;
-  });
-  return listOfTitles;
+  return viewedVideosList;
 }
 
-function countRepeatedTitles(listOfTitles: string[]): {} {
-  const repeatedTitles: {} = listOfTitles.reduce(
-    (acc: { [key: string]: number }, title) => {
-      if (acc[title as keyof typeof acc] === undefined) {
-        acc[title as keyof typeof acc] = 1;
-      } else {
-        acc[title as keyof typeof acc]++;
-      }
-      return acc;
-    },
-    {}
-  );
-  return repeatedTitles;
+export function getMostViewedVideosList(
+  viewedVideosList: Array<mostViewedVideosTYPE>
+) {
+  const mostViewedVideosList = viewedVideosList.reduce((array: any, video, index) => {
+    if (array[index].title === undefined) {
+      array[index].
+    }
+  },
+  []);
 }
 
 function sortTitlesByViews(repeatedTitles: object): Array<[string, number]> {
@@ -32,8 +33,15 @@ function sortTitlesByViews(repeatedTitles: object): Array<[string, number]> {
   ).sort((a, b) => b[1] - a[1]);
   return sortedTitlesByViews;
 }
-console.time('sort');
-sortTitlesByViews(countRepeatedTitles(getTitles(history))).map((title) =>
-  document.write(`${title[0]}: ${title[1]} views <br>`)
-);
-console.timeEnd('sort');
+
+/* const repeatedTitles: {} = listOfTitles.reduce(
+    (acc, title) => {
+      if (acc[title] === undefined) {
+        acc[title] = 1;
+      } else {
+        acc[title]++;
+      }
+      return acc;
+    },
+    {}
+  ); */

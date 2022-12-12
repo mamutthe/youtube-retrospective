@@ -1,20 +1,29 @@
 import React from 'react';
-import { Button } from 'flowbite-react';
-import { useRef } from 'react';
-
-const uploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (!e.target.files) return console.log('No file has been uploaded');
-  const file = e.target.files[0];
-  const reader = new FileReader();
-  reader.readAsText(file);
-  reader.onload = () => {
-    const json = JSON.parse(reader.result as string);
-    console.log(json);
-  };
-};
+import { Button, Spinner } from 'flowbite-react';
+import { useState } from 'react';
+import { doHistory, history } from '../history-analyzer/doHistory';
+import { getMostViewedVideos } from '../history-analyzer/mostViewed';
 
 export default function HistoryUpload() {
-  const labelRef = useRef(null);
+  const [uploadButtonStyle, setUploadButtonStyle] = useState({
+    status: 'Browse file...',
+  });
+
+  const uploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return alert('No file has been uploaded');
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.readyState && setUploadButtonStyle({ status: 'Loading' });
+    reader.onload = () => {
+      setUploadButtonStyle({
+        status: e.target.value.split('\\').pop() as string,
+      });
+      doHistory(reader.result);
+      getMostViewedVideos(history);
+    };
+  };
+
   return (
     <main className="p-4">
       <section className="flex flex-col items-center justify-center space-y-6">
@@ -38,9 +47,15 @@ export default function HistoryUpload() {
             onChange={uploadFile}
             className="hidden"
           />
-          <label ref={htmlFor="ytHistory" style={{ display: 'none' }}></label>
-          <Button style={{ marginLeft: 0 }}>Browse file...</Button>
-          <Button color="success">Costumize</Button>
+          <Button id="uploadButton" style={{ marginLeft: 0 }}>
+            <label
+              htmlFor="ytHistory"
+              style={{ marginLeft: 0, cursor: 'pointer' }}
+            >
+              {uploadButtonStyle.status}
+            </label>
+          </Button>
+          <Button color="success">Costomize</Button>
         </div>
       </section>
     </main>

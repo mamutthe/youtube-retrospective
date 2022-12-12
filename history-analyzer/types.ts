@@ -1,7 +1,7 @@
 export interface ytVideoTYPE {
   header: string;
   title: string;
-  titleUrl?: string;
+  titleUrl: string;
   subtitles?: Array<{}>;
   time: string;
   products: string[];
@@ -12,3 +12,9 @@ export interface ytVideoTYPE {
 }
 
 export type historyTYPE = ytVideoTYPE[];
+
+export interface mostViewedVideosTYPE {
+  title: string;
+  titleUrl: string;
+  views: number;
+} 
