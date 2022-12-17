@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Spinner } from 'flowbite-react';
 import { useState } from 'react';
 import { doHistory, history } from '../history-analyzer/doHistory';
-import { getMostViewedVideos } from '../history-analyzer/mostViewed';
 
 export default function HistoryUpload() {
   const [uploadButtonStyle, setUploadButtonStyle] = useState({
@@ -20,7 +19,6 @@ export default function HistoryUpload() {
         status: e.target.value.split('\\').pop() as string,
       });
       doHistory(reader.result);
-      getMostViewedVideos(history);
     };
   };
 
