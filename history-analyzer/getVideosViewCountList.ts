@@ -1,8 +1,9 @@
 import { historyTYPE, ytVideoTYPE, mostViewedVideosTYPE } from './types';
 
-export default function geVideosViewCountList(
+export function getVideosViewCountList(
   history: historyTYPE
 ): Array<mostViewedVideosTYPE> {
+  
   const viewedVideosList = history.map((ytVideo: ytVideoTYPE) => {
     const videoInfo: mostViewedVideosTYPE = {
       title: ytVideo.title,

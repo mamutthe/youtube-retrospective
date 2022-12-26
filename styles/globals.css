@@ -25,9 +25,15 @@
 
 @layer components {
   .blue-gradient {
-    background: linear-gradient(to right, #2784b3, #0052d4);
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
     background-size: 400% 400%;
     animation: animate-gradient 5s ease infinite;
+  }
+
+  .colorful-gradient {
+    background: linear-gradient(-45deg,#23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: animate-gradient 15s ease infinite;
   }
 }
 

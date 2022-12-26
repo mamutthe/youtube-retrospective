@@ -3,12 +3,7 @@ import {MostWatchedChannelCard, MostWatchedVideosCard, TopChannelsCard, MostList
 export default function Storys() {
   return (
     <>
-        <TopChannelsCard />
-        <MostWatchedChannelCard />
-        <MostWatchedVideosCard  />
-        <MostListenedSongsCard />
-        <TopArtistsCard />
-        <TopMonthCard />  
+      <MostWatchedChannelCard />
     </>
   );
 }

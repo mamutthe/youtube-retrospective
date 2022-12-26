@@ -10,7 +10,7 @@ export const RoundedTransparentCard: React.FC<RoundedTransparentCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white/70 backdrop-blur-sm backdrop-saturate-200 rounded shadow-md flex justify-center items-center ${className}`}
+      className={`bg-white/70 backdrop-blur-sm backdrop-saturate-200 rounded-xl shadow-md flex justify-center items-center ${className}`}
     >
       {children}
     </div>
