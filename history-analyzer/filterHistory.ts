@@ -1,4 +1,4 @@
-import { historyTYPE, ytVideoTYPE } from "./types";
+import { historyTYPE, ytVideoTYPE } from "../types/types";
 
 //Ano que será usado para filtrar o histórico
 const year = 2022;
@@ -43,7 +43,7 @@ function fixTitleUrl(history: historyTYPE): historyTYPE {
 }
 
 // Função principal para filtrar o histórico bruto
-export function filterRawHistory(historyFile: string): historyTYPE {
+export function filterHistory(historyFile: string): historyTYPE {
   const rawHistory = JSON.parse(historyFile);
   const historyFilteredByYear = filterHistoryByYear(year, rawHistory);
   const historyWithoutUnecessary = filterUnnecessaryInfo(historyFilteredByYear);

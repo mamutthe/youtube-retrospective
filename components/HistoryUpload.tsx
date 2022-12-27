@@ -1,13 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Button, Spinner } from "flowbite-react";
-import { historyTYPE } from "../history-analyzer/types";
-import GenericButton from "../components/GenericButton";
+import React, { useState, useRef, useContext } from "react";
+import { Spinner } from "flowbite-react";
+import { HistoryContext } from "../pages/HistoryAnalyzer";
+import { GenericButton } from "../components";
+import { filterHistory } from "../history-analyzer/filterHistory";
 
-export default function HistoryUpload() {
-  const [history, setHistory] = useState<historyTYPE | null>(null);
-  useEffect(() => {
-    console.log(history);
-  }, [history]);
+export const HistoryUpload: React.FC = () => {
+  //Estado obtido com componente HistoryAnalyzer
+  const { setHistory, handleGenerate } = useContext(HistoryContext);
 
   //Função que lida com o upload do histórico	e armazena o histórico no estado "history"
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,9 +16,12 @@ export default function HistoryUpload() {
     reader.readAsText(file);
     reader.readyState && setUploadButtonStyle({ status: "Loading" });
     reader.onload = () => {
-      setHistory(JSON.parse(reader.result as string));
+      const filteredHistory = filterHistory(
+        JSON.parse(reader.result as string)
+      );
+      setHistory(filteredHistory);
       setUploadButtonStyle({
-        status: e.target.value.split("\\").pop() as string,
+        status: "Done!",
       });
     };
   };
@@ -40,9 +42,9 @@ export default function HistoryUpload() {
     <main className="p-4">
       <section className="flex flex-col items-center justify-center space-y-6">
         <header className="text-center">
-          <h1 className="font-extrabold text-4xl lg:text-6xl text-slate-900">
+          <h1 className="text-4xl font-extrabold lg:text-6xl text-slate-900">
             UPLOAD YOUR
-            <span className="blue-gradient bg-clip-text text-transparent ">
+            <span className="text-transparent blue-gradient bg-clip-text ">
               {" "}
               HISTORY{" "}
             </span>
@@ -82,4 +84,6 @@ export default function HistoryUpload() {
       </section>
     </main>
   );
-}
+};
+
+export {};

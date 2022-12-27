@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick?: (e: any) => void;
 }
 
-const GenericButton: React.FC<ButtonProps> = ({
+export const GenericButton: React.FC<ButtonProps> = ({
   children,
   id,
   className,
@@ -24,4 +24,4 @@ const GenericButton: React.FC<ButtonProps> = ({
   );
 };
 
-export default GenericButton;
+export {};
