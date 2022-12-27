@@ -19,9 +19,9 @@ const mostWatchedChannelsList = [
 export function TopChannelsCard() {
   return (
     <>
-      <BaseCard className="bg-gradient-to-r from-amber-500 to-orange-500 text-sm bg-orange bg-size h-full w-full grid grid-row-3 p-1 pt-6">
+      <BaseCard className="grid w-full h-full p-1 pt-6 text-sm bg-gradient-to-r from-amber-500 to-orange-500 bg-orange bg-size grid-row-3">
         <div className="flex flex-col items-center space-y-4">
-          <span className="font-medium text-slate-200 text-xl">
+          <span className="text-xl font-medium text-slate-100">
             Your most watched channels were
           </span>
           <Image
@@ -31,26 +31,26 @@ export function TopChannelsCard() {
             width={110}
           ></Image>
           <RoundedTransparentCard className="p-4 h-16 w-[21.5rem]">
-            <span className="text-3xl text-orange-500 font-bold">
+            <span className="text-3xl font-bold text-orange-500">
               {mostWatchedChannelsList[0].channel}
             </span>
           </RoundedTransparentCard>
         </div>
-        <div className="grid grid-rows-2 grid-cols-2 gap-4 p-4 mb-4">
+        <div className="grid grid-cols-2 grid-rows-2 gap-4 p-4 mb-4">
           {mostWatchedChannelsList.slice(1).map((channel, index) => {
             if (index === 0) {
               return (
                 <RoundedTransparentCard
                   key={channel.channel}
-                  className="h-14 col-span-2"
+                  className="col-span-2 h-14"
                 >
-                  <p className="text-orange-500 font-medium text-xl text-center">{`2º ${channel.channel}`}</p>
+                  <p className="text-xl font-medium text-center text-orange-500">{`2º ${channel.channel}`}</p>
                 </RoundedTransparentCard>
               );
             }
             return (
               <RoundedTransparentCard key={channel.channel} className="h-14">
-                <span className="text-orange-500 font-medium text-lg text-center">{`${
+                <span className="text-lg font-medium text-center text-orange-500">{`${
                   index + 2
                 }º ${channel.channel}`}</span>
               </RoundedTransparentCard>
