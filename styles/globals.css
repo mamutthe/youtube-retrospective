@@ -25,9 +25,9 @@
 
 @layer components {
   .blue-gradient {
-    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    background: linear-gradient(-45deg, #FC466B, #3F5EFB);
     background-size: 400% 400%;
-    animation: animate-gradient 5s ease infinite;
+    animation: animate-gradient 15s ease infinite;
   }
 
   .colorful-gradient {
