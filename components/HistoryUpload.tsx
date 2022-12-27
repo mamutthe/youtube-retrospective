@@ -16,9 +16,7 @@ export const HistoryUpload: React.FC = () => {
     reader.readAsText(file);
     reader.readyState && setUploadButtonStyle({ status: "Loading" });
     reader.onload = () => {
-      const filteredHistory = filterHistory(
-        JSON.parse(reader.result as string)
-      );
+      const filteredHistory = filterHistory(reader.result as string);
       setHistory(filteredHistory);
       setUploadButtonStyle({
         status: "Done!",
@@ -42,7 +40,7 @@ export const HistoryUpload: React.FC = () => {
     <main className="p-4">
       <section className="flex flex-col items-center justify-center space-y-6">
         <header className="text-center">
-          <h1 className="text-4xl font-extrabold lg:text-6xl text-slate-900">
+          <h1 className="text-4xl font-extrabold lg:text-7xl text-slate-900">
             UPLOAD YOUR
             <span className="text-transparent blue-gradient bg-clip-text ">
               {" "}
@@ -51,11 +49,11 @@ export const HistoryUpload: React.FC = () => {
             FILE
           </h1>
           <p className="font-bold lg:text-3xl">
-            and select which stats you want
+            {"and select which stats you want".toUpperCase()}
           </p>
         </header>
 
-        <div className="flex flex-row justify-between items-center w-[85%]">
+        <div className="flex flex-row items-center justify-between w-[25%]">
           <input
             type="file"
             id="ytHistory"
@@ -76,7 +74,7 @@ export const HistoryUpload: React.FC = () => {
           </GenericButton>
         </div>
         <GenericButton
-          className="blue-gradient w-[85%]"
+          className="blue-gradient w-[85%] lg:w-[25%]"
           onClick={handleGenerate}
         >
           Generate

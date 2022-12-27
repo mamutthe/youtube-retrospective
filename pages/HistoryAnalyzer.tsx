@@ -1,6 +1,7 @@
-import React, { useState, createContext } from "react";
-import { historyTYPE } from "../types/types";
+import React, { useState, createContext, useEffect } from "react";
+import { historyTYPE, reducedHistoryTYPE } from "../types/types";
 import { HistoryUpload } from "../components";
+import { reduceHistory } from "../history-analyzer/reduceHistory";
 
 export const HistoryContext = createContext({
   history: null as historyTYPE | null,
@@ -9,11 +10,13 @@ export const HistoryContext = createContext({
 });
 
 const HistoryAnalyzer: React.FC = () => {
-  //Estado referente ao histórico upado pelo usuário
+  //Estado referente ao histórico upado pelo usuário e ao histórico reduzido
   const [history, setHistory] = useState<historyTYPE | null>(null);
+  const [reducedHistory, setReducedHistory] =
+    useState<reducedHistoryTYPE | null>(null);
 
   const handleGenerate = () => {
-    
+    setReducedHistory(reduceHistory(history as historyTYPE));
   };
 
   return (
