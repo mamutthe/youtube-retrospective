@@ -1,8 +1,11 @@
 export interface ytVideoTYPE {
-  header: string;
+  header: "Youtube" | "YouTube Music";
   title: string;
   titleUrl: string;
-  subtitles?: Array<{}>;
+  subtitles: Array<{
+    name: string;
+    url: string;
+  }>;
   time: string;
   products: string[];
   details?: Array<{
@@ -13,8 +16,14 @@ export interface ytVideoTYPE {
 
 export type historyTYPE = ytVideoTYPE[];
 
-export interface mostViewedVideosTYPE {
+export interface reducedYTVideoTYPE {
+  header: "Youtube" | "YouTube Music";
   title: string;
   titleUrl: string;
+  channelTitle: string;
+  channelTitleUrl: string;
+  time: string;
   views: number;
 } 
+
+export type reducedHistoryTYPE = reducedYTVideoTYPE[];

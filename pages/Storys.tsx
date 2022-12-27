@@ -3,7 +3,7 @@ import {MostWatchedChannelCard, MostWatchedVideosCard, TopChannelsCard, MostList
 export default function Storys() {
   return (
     <>
-      <MostWatchedChannelCard />
+      <TopChannelsCard />
     </>
   );
 }
