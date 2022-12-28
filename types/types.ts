@@ -24,6 +24,12 @@ export interface reducedYTVideoTYPE {
   channelTitleUrl: string;
   time: string;
   views: number;
-} 
+}
 
 export type reducedHistoryTYPE = reducedYTVideoTYPE[];
+
+export interface topChannelsTYPE {
+  channelTitle: string;
+  channelTitleUrl: string;
+  count: number;
+}
