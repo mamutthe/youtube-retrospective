@@ -1,12 +1,6 @@
-import { reducedHistoryTYPE, reducedYTVideoTYPE } from "../../../types/types";
+import { reducedHistoryTYPE, reducedYTVideoTYPE, topChannelsTYPE } from "../../../types/types";
 
-interface topChannelsTYPE {
-  [key: string]: {
-    count: number;
-    channelTitle: string;
-    channelTitleUrl: string;
-  };
-}
+
 
 export const getTopChannels = (reducedHistory: reducedHistoryTYPE) => {
   //Gera um objeto que contém a quantidade de videos diferentes de cada canal no histórico

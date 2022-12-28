@@ -28,8 +28,13 @@ export interface reducedYTVideoTYPE {
 
 export type reducedHistoryTYPE = reducedYTVideoTYPE[];
 
-export interface topChannelsTYPE {
+//Este tipo armazena informações sobre os canais presentes no historico, incluindo a quantidade de videos assistidos de cada um
+export interface channelsWithCountTYPE {
+  count: number;
   channelTitle: string;
   channelTitleUrl: string;
-  count: number;
+}
+
+export interface topChannelsTYPE {
+  [key: string]: channelsWithCountTYPE;
 }
