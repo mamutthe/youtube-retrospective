@@ -3,10 +3,11 @@ import { Spinner } from "flowbite-react";
 import { HistoryContext } from "../pages/HistoryAnalyzer";
 import { GenericButton } from "../components";
 import { filterHistory } from "../history-analyzer/filterHistory";
+import { reduceHistory } from "../history-analyzer/reduceHistory";
 
 export const HistoryUpload: React.FC = () => {
   //Estado obtido com componente HistoryAnalyzer
-  const { setHistory, handleGenerate } = useContext(HistoryContext);
+  const { setReducedHistory, handleGenerate } = useContext(HistoryContext);
 
   //Função que lida com o upload do histórico	e armazena o histórico no estado "history"
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +18,7 @@ export const HistoryUpload: React.FC = () => {
     reader.readyState && setUploadButtonStyle({ status: "Loading" });
     reader.onload = () => {
       const filteredHistory = filterHistory(reader.result as string);
-      setHistory(filteredHistory);
+      setReducedHistory(reduceHistory(filteredHistory));
       setUploadButtonStyle({
         status: "Done!",
       });

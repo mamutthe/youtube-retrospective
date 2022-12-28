@@ -3,18 +3,7 @@ import { RoundedTransparentCard } from '../../RoundedTransparentCard/RoundedTran
 import ytChannelPic from '/workspaces/yt-history-stats/public/picExample.jpg';
 import Image from 'next/image';
 
-const mostWatchedChannelsList = [
-  { channel: 'Web Diva Tulla Luana' },
-  { channel: 'Monark' },
-  { channel: 'Brasil Paralelo' },
-  { channel: 'MC Melody' },
-  { channel: 'Damares alves' },
-  { channel: 'Eduardo Bolsonaro' },
-  { channel: 'Porno de anão' },
-  { channel: 'Paola Carossela' },
-  { channel: 'Felipe Neto' },
-  { channel: 'UNESP Rio Preto' },
-];
+const topChannels = window.localStorage.getItem('topChannels');
 
 export function TopChannelsCard() {
   return (

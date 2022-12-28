@@ -42,11 +42,13 @@ export const reduceHistory = (history: historyTYPE): reducedHistoryTYPE => {
           currentVideoList[videoIndex].views++;
         } else {
           currentVideoList.push(currentVideo);
+          currentVideoList[currentVideoList.length - 1].views++;
         }
         return currentVideoList;
       },
       []
     );
 
+  console.log(reducedHistory);
   return reducedHistory;
 };
