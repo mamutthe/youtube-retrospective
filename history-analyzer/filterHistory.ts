@@ -49,10 +49,6 @@ export function filterHistory(historyFile: string): historyTYPE {
   const historyFilteredByYear = filterHistoryByYear(year, rawHistory);
   const historyWithoutUnecessary = filterUnnecessaryInfo(historyFilteredByYear);
   const filteredHistory = fixTitleUrl(historyWithoutUnecessary);
-  //return the videos where subtitles are undefined
-  const teste = historyWithoutUnecessary.filter(
-    (ytVideo: ytVideoTYPE) => ytVideo.subtitles === undefined
-  );
-  console.log(teste);
+
   return filteredHistory;
 }
