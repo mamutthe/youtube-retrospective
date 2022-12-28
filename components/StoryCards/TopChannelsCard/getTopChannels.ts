@@ -33,6 +33,6 @@ export const getTopChannels = (reducedHistory: reducedHistoryTYPE) => {
   
   //Salva a lista dos canais mais vistos no localStorage
   window.localStorage.setItem("topChannels", JSON.stringify(sortedTopChannels));
-
+  
 return sortedTopChannels;
 };

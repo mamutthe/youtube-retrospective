@@ -49,6 +49,5 @@ export const reduceHistory = (history: historyTYPE): reducedHistoryTYPE => {
       []
     );
 
-  console.log(reducedHistory);
   return reducedHistory;
 };
