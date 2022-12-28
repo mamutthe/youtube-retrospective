@@ -20,9 +20,10 @@ function filterUnnecessaryInfo(
   // ou com títulos "Watched a video that has been removed" ou "Visited YouTube Music"
   const historyWithoutAdsAndRemoved: historyTYPE = historyFilteredByYear.filter(
     (ytVideo: ytVideoTYPE) =>
-      ytVideo.details === undefined &&
-      ytVideo.title !== "Watched a video that has been removed" &&
-      ytVideo.title !== "Visited YouTube Music"
+      ytVideo.details === undefined && // Anuncios
+      ytVideo.title !== "Watched a video that has been removed" && // Videos removidos
+      ytVideo.title !== "Visited YouTube Music" && // Visita ao YouTube Music???
+      ytVideo.subtitles !== undefined // Videos do YouTube que nao estao mais disponiveis, por algum motivo...
   );
 
   return historyWithoutAdsAndRemoved;
@@ -48,6 +49,10 @@ export function filterHistory(historyFile: string): historyTYPE {
   const historyFilteredByYear = filterHistoryByYear(year, rawHistory);
   const historyWithoutUnecessary = filterUnnecessaryInfo(historyFilteredByYear);
   const filteredHistory = fixTitleUrl(historyWithoutUnecessary);
-
+  //return the videos where subtitles are undefined
+  const teste = historyWithoutUnecessary.filter(
+    (ytVideo: ytVideoTYPE) => ytVideo.subtitles === undefined
+  );
+  console.log(teste);
   return filteredHistory;
 }
