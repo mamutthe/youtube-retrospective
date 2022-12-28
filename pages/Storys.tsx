@@ -5,6 +5,7 @@ export default function Storys() {
     <>
       <TopChannelsCard />
       <MostWatchedChannelCard />
+      <MostWatchedVideosCard />
     </>
   );
 }
