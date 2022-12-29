@@ -17,7 +17,7 @@ export interface ytVideoTYPE {
 export type historyTYPE = ytVideoTYPE[];
 
 export interface reducedYTVideoTYPE {
-  header: "Youtube" | "YouTube Music";
+  header: string;
   title: string;
   titleUrl: string;
   channelTitle: string;

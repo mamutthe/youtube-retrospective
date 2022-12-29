@@ -18,7 +18,7 @@ function filterUnnecessaryInfo(
 ): historyTYPE {
   // Filtrar o histórico removendo objetos com atributo "details" definido,
   // ou com títulos "Watched a video that has been removed" ou "Visited YouTube Music"
-  const historyWithoutAdsAndRemoved: historyTYPE = historyFilteredByYear.filter(
+  const historyWithoutUnnecessary: historyTYPE = historyFilteredByYear.filter(
     (ytVideo: ytVideoTYPE) =>
       ytVideo.details === undefined && // Anuncios
       ytVideo.title !== "Watched a video that has been removed" && // Videos removidos
@@ -26,7 +26,7 @@ function filterUnnecessaryInfo(
       ytVideo.subtitles !== undefined // Videos do YouTube que nao estao mais disponiveis, por algum motivo...
   );
 
-  return historyWithoutAdsAndRemoved;
+  return historyWithoutUnnecessary;
 }
 
 // Função para corrigir a URL do título
@@ -43,12 +43,19 @@ function fixTitleUrl(history: historyTYPE): historyTYPE {
   return historyWithFixedUrl;
 }
 
+/* function fixMusicVideosTitle(history:historyTYPE ): historyTYPE {
+  const fixedMusicVideosTitle: historyTYPE = history.map(
+    (ytVideo: ytVideoTYPE) => {
+      if (ytVideo.title.includes("Watched") && ytVideo.subtitles[0].name === "YouTube Music") {
+    }
+} */
+
 // Função principal para filtrar o histórico bruto
 export function filterHistory(historyFile: string): historyTYPE {
   const rawHistory = JSON.parse(historyFile);
   const historyFilteredByYear = filterHistoryByYear(year, rawHistory);
-  const historyWithoutUnecessary = filterUnnecessaryInfo(historyFilteredByYear);
-  const filteredHistory = fixTitleUrl(historyWithoutUnecessary);
+  const historyWithoutUnnecessary = filterUnnecessaryInfo(historyFilteredByYear);
+  const filteredHistory = fixTitleUrl(historyWithoutUnnecessary);
 
   return filteredHistory;
 }
