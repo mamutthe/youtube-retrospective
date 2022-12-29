@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { historyTYPE, reducedHistoryTYPE } from "../types/types";
 import { HistoryUpload } from "../components";
 import { getTopChannels } from "../components/StoryCards/TopChannelsCard/getTopChannels";
-import { getMostWatchedVideos } from "../components/StoryCards/MostWatchedVideosCard/getMostWatchedVideos";
+import { getTopVideosAndSongs } from "../history-analyzer/getTopVideosAndSongs";
 
 export const HistoryContext = createContext({
   setReducedHistory: (reducedHistory: reducedHistoryTYPE) => {},
@@ -19,7 +19,8 @@ const HistoryAnalyzer: React.FC = () => {
 
   const handleGenerate = () => {
     getTopChannels(reducedHistory as reducedHistoryTYPE);
-    getMostWatchedVideos(reducedHistory as reducedHistoryTYPE, 5);
+    getTopVideosAndSongs(reducedHistory as reducedHistoryTYPE, 5, "YouTube");
+    getTopVideosAndSongs(reducedHistory as reducedHistoryTYPE, 5, "YouTube Music");
     router.push("/Storys");
   };
 
