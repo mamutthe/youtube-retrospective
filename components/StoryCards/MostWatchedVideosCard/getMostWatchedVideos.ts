@@ -10,7 +10,7 @@ export const getMostWatchedVideos = (
 
   //Filtra apenas os videos do youtube, ignorando o youtube music, a função sort ordena a lista de acordo com a quantidade de views
   const mostWatchedVideos = reducedHistory.filter(
-    (video: reducedYTVideoTYPE) => video.header === "YouTube music"
+    (video: reducedYTVideoTYPE) => video.header === "YouTube Music"
   ).sort(
     (videoA, videoB) => videoB.views - videoA.views
   );
