@@ -35,3 +35,7 @@ export interface channelsWithViewCountTYPE {
   channelTitle: string; //channelTitle refere-se tanto ao nome do canal(YouTube) quanto ao nome do artista(YouTube Music)
   channelTitleUrl: string;
 }
+
+export interface topChannelsTYPE {
+  [key: string]: channelsWithViewCountTYPE;
+}
