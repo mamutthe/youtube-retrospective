@@ -1,14 +1,14 @@
 export { AnimatedTitle } from "./AnimatedTitle/AnimatedTitle";
-export { FeaturedStatsCard } from "./FeaturedStatsCard";
+export { StoryInfoCard } from "./StoryInfoCard";
 export { Paragraph } from "./Text/Paragraph";
 export { GradientButton } from "./GradientButton/GradientButton";
 export { RoundedTransparentCard } from "./RoundedTransparentCard/RoundedTransparentCard";
 export { BaseCard } from "./StoryCards/BaseCard/BaseCard";
-export { TopChannelsCard } from "./StoryCards/TopChannelsCard/TopChannelsCard";
+export { TopChannelsCard } from "./StoryCards/TopChannelsCard";
 export { MostWatchedChannelCard } from "./StoryCards/MostWatchedChannelCard/MostWatchedChannelCard";
 export { MostWatchedVideosCard } from "./StoryCards/MostWatchedVideosCard/MostWatchedVideosCard";
 export { MostListenedSongsCard } from "./StoryCards/MostListenedSongsCard/MostListenedSongsCard";
-export { TopArtistsCard } from "./StoryCards/TopArtistsCard/TopArtistsCard";
+export { TopArtistsCard } from "./StoryCards/TopArtistsCard";
 export { TopMonthCard } from "./StoryCards/TopMonthCard";
 export { GenericButton } from "./GenericButton";
 export { HistoryUpload } from "./HistoryUpload";
