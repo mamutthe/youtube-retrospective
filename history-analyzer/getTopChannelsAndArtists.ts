@@ -1,7 +1,7 @@
 import {
   reducedHistoryTYPE,
   reducedYTVideoTYPE,
-  topChannelsTYPE,
+  topChannelsTYPE
 } from "../types/types";
 
 export const getTopChannelsAndArtists = (
@@ -36,7 +36,7 @@ export const getTopChannelsAndArtists = (
   );
   sortedTopChannels.length = 10;
 
-  if (service === "YouYube") {
+  if (service === "YouTube") {
     window.localStorage.setItem(
       "topChannels",
       JSON.stringify(sortedTopChannels)
