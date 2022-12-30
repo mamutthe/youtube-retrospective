@@ -28,13 +28,10 @@ export interface reducedYTVideoTYPE {
 
 export type reducedHistoryTYPE = reducedYTVideoTYPE[];
 
-//Este tipo armazena informações sobre os canais presentes no historico, incluindo a quantidade de videos assistidos de cada um
-export interface channelsWithCountTYPE {
+//Este tipo armazena informações sobre os canais presentes no historico, incluindo a quantidade de videos assistidos de cada um,
+//essas informações são geradas pelo arquivo getTopChannelsAndArtists.ts
+export interface channelsWithViewCountTYPE {
   count: number;
-  channelTitle: string;
+  channelTitle: string; //channelTitle refere-se tanto ao nome do canal(YouTube) quanto ao nome do artista(YouTube Music)
   channelTitleUrl: string;
-}
-
-export interface topChannelsTYPE {
-  [key: string]: channelsWithCountTYPE;
 }
