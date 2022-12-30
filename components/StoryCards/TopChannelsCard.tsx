@@ -1,9 +1,9 @@
-import { BaseCard } from "../BaseCard/BaseCard";
-import { RoundedTransparentCard } from "../../RoundedTransparentCard/RoundedTransparentCard";
+import { BaseCard } from "./BaseCard/BaseCard";
+import { RoundedTransparentCard } from "../RoundedTransparentCard/RoundedTransparentCard";
 import ytChannelPic from "/workspaces/yt-history-stats/public/picExample.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { topChannelsTYPE } from "../../../types/types";
+import { topChannelsTYPE } from "../../types/types";
 
 export function TopChannelsCard() {
   const [topChannels, setTopChannels] = useState<topChannelsTYPE[]>(
@@ -11,7 +11,10 @@ export function TopChannelsCard() {
   );
 
   useEffect(() => {
-    if (window.localStorage.getItem("topChannels") === null) return;
+    if (window.localStorage.getItem("topChannels") === null) {
+      throw new Error("TopChannelsCard: no data found in localStorage");
+    }
+
     setTopChannels(
       JSON.parse(window.localStorage.getItem("topChannels") as string)
     );
@@ -49,7 +52,10 @@ export function TopChannelsCard() {
               );
             }
             return (
-              <RoundedTransparentCard key={channel.channelTitle} className="h-14">
+              <RoundedTransparentCard
+                key={channel.channelTitle}
+                className="h-14"
+              >
                 <span className="text-lg font-medium text-center text-orange-500">{`${
                   index + 2
                 }º ${channel.channelTitle}`}</span>
