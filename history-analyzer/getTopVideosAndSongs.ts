@@ -4,7 +4,7 @@ export const getTopVideosAndSongs = (
   reducedHistory: reducedHistoryTYPE,
   listSize: number,
   service: string
-): reducedHistoryTYPE => {
+) => {
   if (!reducedHistory) {
     throw new Error("getMostWatchedVideos: reducedHistory is undefined");
   }
@@ -34,6 +34,4 @@ export const getTopVideosAndSongs = (
     default:
       break;
   }
-  
-  return topVideosAndSongs;
 };
