@@ -7,6 +7,8 @@ export default function Storys() {
       <MostWatchedChannelCard />
       <MostWatchedVideosCard />
       <MostListenedSongsCard />
+      <TopArtistsCard />
+      <TopMonthCard />
     </>
   );
 }
