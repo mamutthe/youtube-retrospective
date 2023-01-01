@@ -11,7 +11,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
 }) => {
   return (
     <>
-      <div className={`rounded-2xl h-[40rem] w-[24rem] overflow-hidden ${className}`}>
+      <div className={`rounded-2xl h-[40rem] w-[24rem] text-center overflow-hidden ${className}`}>
           {children}
       </div>
     </>
