@@ -12,10 +12,10 @@ const SearchBar = (props: SearchBarProps) => {
       action=""
       {...props}
       onSubmit={(e) => e.preventDefault()}
-      className="w-full"
+      className="w-full backdrop-saturate-150"
     >
       <div className="relative flex items-center text-gray-500 focus-within:text-gray-900">
-        <MagnifyingGlassIcon className="h-6 w-6 absolute ml-3 pointer-events-none" />
+        <MagnifyingGlassIcon className="absolute w-6 h-6 ml-3 pointer-events-none" />
         <input
           type="text"
           name="search"

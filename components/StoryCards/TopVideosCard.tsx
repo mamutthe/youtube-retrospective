@@ -5,8 +5,9 @@ import { StoryInfoCard } from "../StoryInfoCard";
 import { reducedHistoryTYPE, reducedYTVideoTYPE } from "../../types/types";
 
 export function TopVideosCard() {
-  const [topVideos, setTopVideos] =
-    useState<reducedHistoryTYPE>([] as reducedHistoryTYPE);
+  const [topVideos, setTopVideos] = useState<reducedHistoryTYPE>(
+    [] as reducedHistoryTYPE
+  );
 
   useEffect(() => {
     if (window.localStorage.getItem("topVideos") === null) {
