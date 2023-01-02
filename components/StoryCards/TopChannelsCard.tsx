@@ -1,70 +1,48 @@
-import { BaseCard } from "./BaseCard/BaseCard";
-import { RoundedTransparentCard } from "../RoundedTransparentCard/RoundedTransparentCard";
-import ytChannelPic from "/workspaces/yt-history-stats/public/picExample.jpg";
-import Image from "next/image";
+import { BaseCard } from "./BaseCard";
+import { StoryInfoCard } from "../StoryInfoCard";
 import { useEffect, useState } from "react";
-import { topChannelsTYPE } from "../../types/types";
+import { channelsWithViewCountTYPE } from "../../types/types";
+import { ViewCount } from "../ViewCount";
 
 export function TopChannelsCard() {
-  const [topChannels, setTopChannels] = useState<topChannelsTYPE[]>(
-    [] as topChannelsTYPE[]
+  const [topChannel, setTopChannel] = useState<channelsWithViewCountTYPE[]>(
+    [] as channelsWithViewCountTYPE[]
   );
 
   useEffect(() => {
     if (window.localStorage.getItem("topChannels") === null) {
-      throw new Error("TopChannelsCard: no data found in localStorage");
+      throw new Error("TopChannelsCard: no topChannels in localStorage");
     }
 
-    setTopChannels(
-      JSON.parse(window.localStorage.getItem("topChannels") as string)
+    setTopChannel(
+      JSON.parse(window.localStorage.getItem("topChannels") as string).slice(
+        0,
+        6
+      )
     );
   }, []);
 
   return (
-    <>
-      <BaseCard className="grid w-full h-full p-1 pt-6 text-sm bg-gradient-to-r from-amber-500 to-orange-500 bg-orange bg-size grid-row-3">
-        <div className="flex flex-col items-center space-y-4">
-          <span className="text-xl font-medium text-slate-100">
-            Your most watched channels were
-          </span>
-          <Image
-            className="rounded-full"
-            src={ytChannelPic}
-            alt="channel pic"
-            width={110}
-          ></Image>
-          <RoundedTransparentCard className="p-4 h-16 w-[21.5rem]">
-            <span className="text-3xl font-bold text-orange-500">
-              {topChannels[0]?.channelTitle}
-            </span>
-          </RoundedTransparentCard>
-        </div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-4 p-4 mb-4">
-          {topChannels.slice(1).map((channel, index) => {
-            if (index === 0) {
-              return (
-                <RoundedTransparentCard
-                  key={channel.channelTitle}
-                  className="col-span-2 h-14"
-                >
-                  <p className="text-xl font-medium text-center text-orange-500">{`2º ${channel.channelTitle}`}</p>
-                </RoundedTransparentCard>
-              );
-            }
-            return (
-              <RoundedTransparentCard
-                key={channel.channelTitle}
-                className="h-14"
-              >
-                <span className="text-lg font-medium text-center text-orange-500">{`${
-                  index + 2
-                }º ${channel.channelTitle}`}</span>
-              </RoundedTransparentCard>
-            );
-          })}
-        </div>
-      </BaseCard>
-    </>
+    <BaseCard className="flex flex-col items-center justify-center px-4 py-1 space-y-4 bg-gradient-to-r from-sky-400 to-sky-700">
+      <span className="self-auto text-2xl font-medium text-white b-4">
+        Your most watched channels were
+      </span>
+
+      {topChannel.map((channel: channelsWithViewCountTYPE) => (
+        <StoryInfoCard
+          key={channel.channelTitle}
+          info={channel.channelTitle}
+          link={channel.channelTitleUrl}
+          textStyle={
+            "text-sky-900 max-w-[16rem] overflow-hidden text-ellipsis whitespace-nowrap mr-auto"
+          }
+        >
+          <ViewCount className="text-sky-800 bg-sky-300/20 rounded-l-xl rounded-r-none ml-0 mr-auto">
+            {channel.count} <br /> videos
+          </ViewCount>
+        </StoryInfoCard>
+      ))}
+    </BaseCard>
   );
 }
 
