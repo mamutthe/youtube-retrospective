@@ -6,9 +6,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-               "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 @keyframes animate-gradient {
@@ -25,15 +24,25 @@
 
 @layer components {
   .blue-gradient {
-    background: linear-gradient(-45deg, #FC466B, #3F5EFB);
+    background: linear-gradient(-45deg, #fc466b, #3f5efb);
     background-size: 400% 400%;
     animation: animate-gradient 15s ease infinite;
   }
 
   .colorful-gradient {
-    background: linear-gradient(-45deg,#23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: animate-gradient 15s ease infinite;
+    position: relative;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  }
+
+  .colorful-gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+    pointer-events: none;
   }
 }
-
