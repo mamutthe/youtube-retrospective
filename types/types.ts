@@ -22,7 +22,7 @@ export interface reducedYTVideoTYPE {
   titleUrl: string;
   channelTitle: string;
   channelTitleUrl: string;
-  time: string;
+  time: string[];
   views: number;
 }
 
@@ -39,3 +39,7 @@ export interface channelsWithViewCountTYPE {
 export interface topChannelsTYPE {
   [key: string]: channelsWithViewCountTYPE;
 }
+
+export type videosWatchedPerMonthTYPE = {
+  [key: string]: number;
+};
