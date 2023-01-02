@@ -73,7 +73,7 @@ function fixTitleUrl(history: historyTYPE): historyTYPE {
 }
 
 /**
- * @description Remover "Watched" e "- Topic" do título e do nome do canal, isso acontece com os vídeos de música.
+ * @description Remover "Watched" e "- Topic" do título e do nome do canal, isso acontece em vídeos de música.
  *
  * @param {historyTYPE} history - O histórico a ser corrigido.
  *
@@ -82,10 +82,7 @@ function fixTitleUrl(history: historyTYPE): historyTYPE {
 
 function removeExtraInfoFromMusicVideos(history: historyTYPE): historyTYPE {
   return history.map((ytVideo: ytVideoTYPE) => {
-    if (
-      ytVideo.title.includes("Watched") &&
-      ytVideo.subtitles[0].name.includes("- Topic")
-    ) {
+    if (ytVideo.title.startsWith("Watched", 0)) {
       ytVideo.title = ytVideo.title.replace("Watched", "");
       ytVideo.subtitles[0].name = ytVideo.subtitles[0].name.replace(
         "- Topic",
@@ -127,7 +124,6 @@ export function filterHistory(historyFile: string): historyTYPE {
     return filteredHistory;
   } catch (error) {
     // Tratar erros de parse do arquivo JSON
-    console.error(`Error parsing JSON file: ${error}`);
-    throw error;
+    throw new Error(`E: ${error}`);
   }
 }

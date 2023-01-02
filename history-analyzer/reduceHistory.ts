@@ -20,7 +20,7 @@ export const reduceHistory = (history: historyTYPE): reducedHistoryTYPE => {
         titleUrl: ytVideo.titleUrl,
         channelTitle: ytVideo.subtitles?.at(0)?.name || "No Title",
         channelTitleUrl: ytVideo.subtitles?.at(0)?.url || "No URL",
-        time: ytVideo.time,
+        time: [ytVideo.time],
         views: 0,
       };
 
@@ -40,6 +40,7 @@ export const reduceHistory = (history: historyTYPE): reducedHistoryTYPE => {
             (video: reducedYTVideoTYPE) => video.title === currentVideo.title
           );
           currentVideoList[videoIndex].views++;
+          currentVideoList[videoIndex].time.push(currentVideo.time[0]);
         } else {
           currentVideoList.push(currentVideo);
           currentVideoList[currentVideoList.length - 1].views++;
@@ -47,7 +48,8 @@ export const reduceHistory = (history: historyTYPE): reducedHistoryTYPE => {
         return currentVideoList;
       },
       []
-    );
+    ).sort((videoA, videoB) => videoB.views - videoA.views);
+
 
   return reducedHistory;
 };
