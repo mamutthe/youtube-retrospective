@@ -34,12 +34,12 @@ export const StatsExplorer = () => {
   }, [listSize]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-fixed px-36 py-1 text-center colorful-gradient">
-      <span className="text-white font-bold text-5xl antialiased my-10">
+    <div className="colorful-gradient flex min-h-screen flex-col bg-fixed px-36 py-1 text-center">
+      <span className="my-10 text-5xl font-bold text-white antialiased">
         Explore your YouTube Stats
       </span>
 
-      <div className="flex justify-center mb-14">
+      <div className="mb-14 flex justify-center">
         <SearchBar
           onChange={(e) => setSearchQuery((e.target as HTMLFormElement).value)}
         />
@@ -61,7 +61,7 @@ export const StatsExplorer = () => {
         className="bottom-1 right-20"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       />
-      <div className="flex flex-col space-y-2 w-">
+      <div className="w- flex flex-col space-y-2">
         {filteredHistory.slice(0, listSize).map((video: reducedYTVideoTYPE) => (
           <StoryInfoCard
             key={video.title}
@@ -69,9 +69,9 @@ export const StatsExplorer = () => {
             extraInfo={video.channelTitle}
             link={video.titleUrl}
             textStyle="col-start-2 col-end-6 text-xl text-gray-900 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis"
-            className="grid overflow-hidden grid-cols-6 grid-rows-1 gap-y-0 bg-white/70 hover:bg-white/80 rounded-xl"
+            className="grid grid-cols-6 grid-rows-1 gap-y-0 overflow-hidden rounded-xl bg-white/70 hover:bg-white/80"
           >
-            <ViewCount className="bg-white/30 text-lg w-[50%] max-w-full">
+            <ViewCount className="w-[50%] max-w-full bg-white/30 text-lg">
               {video.views} <br /> views
             </ViewCount>
           </StoryInfoCard>

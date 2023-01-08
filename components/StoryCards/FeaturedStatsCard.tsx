@@ -32,9 +32,9 @@ export function FeaturedStatsCard() {
   }, []);
 
   return (
-    <BaseCard className="flex flex-col items-center justify-center px-4 py-1 space-y-4 text-center bg-gradient-to-r from-red-500 to-red-700">
-      <p className="mb-2 text-xl font-medium text-center text-white">
-        The month you watched videos the most was
+    <BaseCard className="flex flex-col items-center space-y-4 bg-gradient-to-r from-red-500 to-red-700 px-4 py-1 text-center">
+      <p className="mt-4 mb-5 text-center text-2xl font-medium text-white">
+        Estes foram os meses em que você mais assistiu
       </p>
       {Object.entries(videosWatchedPerMonth)
         .slice(0, 3)
@@ -42,23 +42,26 @@ export function FeaturedStatsCard() {
           <StoryInfoCard
             key={month[0]}
             info={month[0]}
-            textStyle="text-2xl font-bold text-red-800 mr-auto"
+            textStyle="text-2xl font-bold text-red-800 ml-auto mr-0"
           >
-            <ViewCount className="text-red-800 font-bold text-lg bg-red-500/20 max-w-[22%]">
+            <ViewCount className="max-w-[22%] ml-auto mr-0 bg-red-500/20 text-lg font-bold text-red-800">
               {month[1]}
               <br />
-              videos
+              vídeos
             </ViewCount>
           </StoryInfoCard>
         ))}
 
-      <p className="mb-2 text-xl font-medium text-white">
-        {`That's how many videos you watched in 2022`}
+      <p className="text-xl font-medium text-white">
+        {`Essa foi a quantidade de vídeos que você viu este ano`}
       </p>
       <StoryInfoCard
-        info={`${amountOfVideosWatched} videos`}
+        info={`${amountOfVideosWatched} vídeos`}
         textStyle="text-2xl font-bold text-red-800"
       ></StoryInfoCard>
+       <p className="text-2xl font-medium text-white">
+        É mais de 8 mil !
+      </p>
     </BaseCard>
   );
 }

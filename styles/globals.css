@@ -6,9 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  /* border: 1px solid red; */
+ /*  border: 1px solid red; */
 }
 
 @keyframes animate-gradient {
@@ -23,23 +21,27 @@
   }
 }
 
-@keyframes purple-shadow-pulse {
-  0% {
-    box-shadow: 0 0 10px 10px #ffffff;
-  }
-  50% {
-    box-shadow: 0 0 20px 20px #00ff00;
-  }
-  100% {
-    box-shadow: 0 0 10px 10px #ffffff;
-  }
-}
-
 @layer components {
   .blue-gradient {
-    background: linear-gradient(-45deg, #a21caf, #6c2bd9);
+    background: linear-gradient(-45deg, #34d399, #0694a2);
     background-size: 400% 400%;
-    animation: animate-gradient 10s ease infinite;
+    animation: animate-gradient 15s ease infinite;
+  }
+
+  .purple-gradient {
+    background: linear-gradient(-45deg, #a21caf, #6c2bd9);
+    background-size: 300% 400%;
+    animation: animate-gradient 5s ease infinite;
+  }
+
+  .orange-gradient {
+    background: linear-gradient(-45deg, #faca15, #f43f5e);
+    background-size: 130% 100%;
+    animation: animate-gradient 8s ease infinite;
+  }
+
+  .pseudo-glow {
+    @apply relative before:absolute before:inset-2 before:block before:blur-lg before:transition-all before:duration-75 before:ease-in-out before:hover:blur-xl;
   }
 
   .animate-purple-gradient {
@@ -48,8 +50,9 @@
   }
 
   .colorful-gradient {
-    position: relative;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 100% 100%;
+    animation: animate-gradident 1s ease infinite;
   }
 
   .colorful-gradient::before {
@@ -64,6 +67,13 @@
     pointer-events: none;
   }
 
-  .purple-shadow {
+  .center-StatsInfoCard-text {
+    margin-left: auto;
+    margin-left: 5rem;
   }
+
+  .font-roboto {
+
+  }
+
 }

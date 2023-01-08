@@ -3,7 +3,7 @@ import React from 'react';
 type BaseCardProps = {
   className?: string;
   children?: React.ReactNode;
-};
+} 
 
 export const BaseCard: React.FC<BaseCardProps> = ({
   className,

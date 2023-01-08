@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'roboto': ['Roboto', 'sans-serif']
+    }
   },
   plugins: [ require('flowbite/plugin')],
+  safelist:[
+    "before:orange-gradient",
+    "before:blue-gradient",
+    "before:purple-gradient"
+  ]
 }

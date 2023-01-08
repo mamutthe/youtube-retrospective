@@ -48,10 +48,10 @@ export const StoryInfoCard: React.FC<StoryInfoCardTYPE> = ({
       <RoundedTransparentCard
         className={`${className} h-[4.5rem] w-full rounded-2xl overflow-hidden border border-white/30`}
       >
-        {children}
-        <span className={`${textStyle} font-medium text-lg`}>
+        <span className={`${textStyle} font-medium`}>
           {info} <br/> {extraInfo}
         </span>
+        {children}
       </RoundedTransparentCard>
     </a>
   );

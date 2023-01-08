@@ -19,21 +19,23 @@ export function TopVideosCard() {
   }, []);
 
   return (
-    <BaseCard className="flex flex-col items-center justify-center px-4 py-1 space-y-4 bg-gradient-to-r from-emerald-400 to-teal-500">
-      <span className="mb-4 text-2xl font-medium text-white">
-        Your most watched videos were
+    <BaseCard className="flex flex-col items-center space-y-4 bg-gradient-to-r from-emerald-400 to-teal-500 px-4 py-1">
+      <span className="mt-4 text-2xl font-medium text-white">
+        Seus vídeos mais assistidos deste ano foram
       </span>
       {topVideos.map((video: reducedYTVideoTYPE) => (
         <StoryInfoCard
           key={video.title}
           info={video.title}
-          textStyle="text-teal-900 mr-auto"
+          textStyle={`px-2 text-teal-900 ${
+            video.title.length > 50 ? "text-md" : "text-lg"
+          } ml-auto mr-0 overflow-hidden overflow-ellipsis`}
           link={video.titleUrl}
         >
-          <ViewCount className="text-lg text-teal-900 bg-emerald-500/20">
+          <ViewCount className="ml-auto mr-0 rounded-r-xl bg-emerald-500/20 text-lg text-teal-900">
             {video.views}
             <br />
-            views
+            vezes
           </ViewCount>
         </StoryInfoCard>
       ))}

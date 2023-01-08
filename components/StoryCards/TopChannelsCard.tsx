@@ -23,9 +23,9 @@ export function TopChannelsCard() {
   }, []);
 
   return (
-    <BaseCard className="flex flex-col items-center justify-center px-4 py-1 space-y-4 bg-gradient-to-r from-sky-400 to-sky-700">
-      <span className="self-auto text-2xl font-medium text-white b-4">
-        Your most watched channels were
+    <BaseCard className="relative flex flex-col items-center space-y-4 bg-gradient-to-r from-sky-400 to-sky-700 px-4 py-1">
+      <span className="mt-4 self-auto text-2xl font-medium text-white">
+        Seus canais mais assistidos foram
       </span>
 
       {topChannel.map((channel: channelsWithViewCountTYPE) => (
@@ -33,12 +33,12 @@ export function TopChannelsCard() {
           key={channel.channelTitle}
           info={channel.channelTitle}
           link={channel.channelTitleUrl}
-          textStyle={
-            "text-sky-900 max-w-[16rem] overflow-hidden text-ellipsis whitespace-nowrap mr-auto"
-          }
+          textStyle={`text-sky-900 ${
+            channel.channelTitle.length > 50 ? "text-md" : "text-lg"
+          } max-w-[16rem] ml-auto`}
         >
-          <ViewCount className="text-sky-800 bg-sky-300/20 rounded-l-xl rounded-r-none ml-0 mr-auto">
-            {channel.count} <br /> videos
+          <ViewCount className="ml-auto mr-0 rounded-r-xl rounded-l-none bg-sky-300/20 text-sky-800">
+            {channel.count} <br /> vídeos
           </ViewCount>
         </StoryInfoCard>
       ))}

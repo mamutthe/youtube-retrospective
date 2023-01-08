@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, createRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { GradientButton } from "../components";
 import { useRouter } from "next/router";
 import { Spinner } from "flowbite-react";
@@ -8,36 +8,37 @@ import { filterHistory } from "../history-analyzer/filterHistory";
 import { reduceHistory } from "../history-analyzer/reduceHistory";
 
 const HeaderUpload: React.FC = () => (
-  <header className="text-center">
-    <h1 className="text-4xl font-extrabold lg:text-7xl text-slate-900">
-      UPLOAD YOUR
-      <span className="text-transparent blue-gradient bg-clip-text ">
-        {" "}
-        HISTORY{" "}
-      </span>
-      FILE
+  <header className="p-4 text-center">
+    <h1 className="orange-gradient bg-clip-text text-7xl font-extrabold text-transparent">
+      Temos um header aqui
     </h1>
-    <p className="font-bold lg:text-3xl uppercase">
-      and select which stats you want
-    </p>
   </header>
 );
 
-const UploadAndCostumize = React.forwardRef<
-  HTMLInputElement,
-  {
-    handleUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    uploadButtonStyle: { status: string };
-  }
->(({ handleUpload, uploadButtonStyle }, ref) => {
+const TutorialSlider: React.FC = () => {
+  return (
+    <div className="flex overflow-hidden h-[35rem] w-[65rem]">
+      <div className="h-full w-full bg-purple-600 shrink-0"></div>
+      <div className="h-full w-full bg-emerald-600 shrink-0"></div>
+      <div className="h-full w-full bg-sky-600 shrink-0"></div>
+      <div className="h-full w-full bg-green-600 shrink-0"></div>
+    </div>
+  );
+};
+
+const UploadAndCostumize: React.FC<{
+  handleUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  uploadButtonState: { status: string; isDisabled: boolean };
+}> = ({ handleUpload, uploadButtonState }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const ytHistoryInputClick = () => {
     if (inputRef === null || inputRef.current === null) return;
     inputRef.current.click();
   };
 
   return (
-    <div className="flex flex-row items-center justify-between w-[25%]">
+    <div className="flex w-[25%] flex-row items-center justify-between">
       <input
         type="file"
         id="ytHistory"
@@ -46,25 +47,25 @@ const UploadAndCostumize = React.forwardRef<
         className="hidden"
         ref={inputRef}
       />
-      <GenericButton
+      <GradientButton
         id="uploadButton"
-        className="bg-blue-500 w-[8.8rem]"
+        beforeClassName={`before:orange-gradient`}
+        className="relative"
         onClick={ytHistoryInputClick}
+        disabled={uploadButtonState.isDisabled}
       >
-        {uploadButtonStyle.status === "Loading" ? (
+        {uploadButtonState.status === "Loading" ? (
           <Spinner />
         ) : (
-          uploadButtonStyle.status
+          uploadButtonState.status
         )}
-      </GenericButton>
-      <GenericButton className="bg-green-500 w-[8.8rem]">
+      </GradientButton>
+      <GenericButton className="w-[8.8rem] bg-green-500">
         Costumize
       </GenericButton>
     </div>
   );
-});
-
-UploadAndCostumize.displayName = "UploadAndCostumize";
+};
 
 const ViewStats: React.FC<{
   handleExplore: () => void;
@@ -84,7 +85,7 @@ const ViewStats: React.FC<{
         </GenericButton>
 
         <GenericButton
-          className="bg-blue-500 w-[85%] lg:w-[25%]"
+          className="w-[85%] bg-blue-500 lg:w-[25%]"
           onClick={handleExplore}
         >
           Explore
@@ -107,12 +108,13 @@ const ViewStats: React.FC<{
 };
 
 export const HistoryUpload: React.FC = () => {
-  const [uploadButtonStyle, setUploadButtonStyle] = useState({
-    status: "Browse file...",
+  const [uploadButtonState, setUploadButtonState] = useState({
+    status: "Selecione seu arquivo...",
+    isDisabled: false,
   });
   const { setHistory, setReducedHistory, handleGenerate, handleExplore } =
     useContext(HistoryContext);
-  const fileInputRef = createRef<HTMLInputElement>();
+
   //Função que lida com o upload do histórico	e armazena o histórico no estado "history"
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
@@ -121,42 +123,53 @@ export const HistoryUpload: React.FC = () => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsText(file);
-    reader.readyState && setUploadButtonStyle({ status: "Loading" });
+    reader.readyState &&
+      setUploadButtonState({
+        status: "Loading",
+        isDisabled: true,
+      });
     reader.onload = () => {
       try {
-        const filteredHistory = filterHistory(reader.result as string);
+        const historyFile = reader.result as string;
+        const filteredHistory = filterHistory(historyFile);
         setHistory(filteredHistory);
         setReducedHistory(reduceHistory(filteredHistory));
-        setUploadButtonStyle({
-          status: "done",
-        });
+        setUploadButtonState((prevState) => ({
+          ...prevState,
+          status: "Upload concluído!",
+        }));
       } catch (error) {
-        setUploadButtonStyle({
-          status: "Browse file...",
+        setUploadButtonState({
+          status: "Selecione seu arquivo...",
+          isDisabled: false,
         });
         console.error(error);
-        alert("Invalid file");
+        alert(
+          "Arquivo inválido: Por favor, faça upload de seu .json contendo o histórico do YouTube"
+        );
       }
     };
   };
 
   return (
-    <main className="p-4">
+    <div className="flex h-screen flex-col items-center bg-zinc-900">
       <HeaderUpload />
 
-      {uploadButtonStyle.status === "done" ? (
+      {uploadButtonState.status === "done" ? (
         <ViewStats
           handleExplore={handleExplore}
           handleGenerate={handleGenerate}
         />
       ) : (
-        <UploadAndCostumize
-          handleUpload={handleUpload}
-          uploadButtonStyle={uploadButtonStyle}
-          ref={fileInputRef}
-        />
+        <>
+          <TutorialSlider />
+          <UploadAndCostumize
+            handleUpload={handleUpload}
+            uploadButtonState={uploadButtonState}
+          />
+        </>
       )}
-    </main>
+    </div>
   );
 };
 

@@ -20,34 +20,40 @@ export function TopVideosPerMonthCard() {
 
   const months = [
     "Jan",
-    "Feb",
+    "Fev",
     "Mar",
-    "Apr",
-    "May",
+    "Abr",
+    "Mai",
     "Jun",
     "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
+    "Ago",
+    "Set",
+    "Out",
     "Nov",
-    "Dec",
+    "Dez",
   ];
 
   return (
-    <BaseCard className="flex flex-col items-center justify-center px-4 py-1 space-y-2 text-center bg-gradient-to-r from-yellow-300 to-rose-500">
+    <BaseCard className="flex flex-col items-center justify-center space-y-2 bg-gradient-to-r from-yellow-300 to-rose-500 px-4 py-1 text-center">
       <span className="mb-1 text-xl font-medium text-white">
-        Your most watched videos per month
+        Estes foram seus vídeos mais assistidos de cada mês
       </span>
       {Object.values(topVideosPerMonth).map((video, index: number) => (
         <StoryInfoCard
           key={video[0].title}
           info={video[0].title}
           link={video[0].titleUrl}
-          textStyle={"order-2 text-yellow-800 text-sm max-w-[12rem] overflow-hidden text-ellipsis whitespace-nowrap"}
-          className="flex flex-row h-[2.5rem]"
+          textStyle={
+            "order-2 text-yellow-800 text-sm max-w-[12rem] overflow-hidden text-ellipsis whitespace-nowrap"
+          }
+          className="flex h-[2.5rem] flex-row"
         >
-          <ViewCount className="order-1 text-yellow-700 bg-yellow-300/20 max-w-[14%] mr-auto">{months[index]}</ViewCount>
-          <ViewCount className="order-3 text-rose-700 bg-rose-500/10 rounded-l-none rounded-r-xl ml-auto mr-0 leading-5">{video[0].views} <br/> views</ViewCount>
+          <ViewCount className="order-1 mr-auto max-w-[14%] bg-yellow-300/20 text-yellow-700">
+            {months[index]}
+          </ViewCount>
+          <ViewCount className="order-3 ml-auto mr-0 rounded-l-none rounded-r-xl bg-rose-500/10 leading-5 text-rose-700">
+            {video[0].views} <br /> vezes
+          </ViewCount>
         </StoryInfoCard>
       ))}
     </BaseCard>

@@ -3,20 +3,21 @@ import { videosWatchedPerMonthTYPE } from "../types/types";
 
 export const getVideosWatchedPerMonth = (history: historyTYPE) => {
   const months = [
-    "foo",
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Foo",
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
   ];
+
   let videosWatchedPerMonth: videosWatchedPerMonthTYPE = {};
 
   history.forEach((video, index: number) => {
