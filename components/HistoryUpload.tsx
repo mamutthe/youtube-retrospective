@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { GradientButton } from "../components";
 import { useRouter } from "next/router";
 import { Spinner } from "flowbite-react";
@@ -6,6 +6,7 @@ import { HistoryContext } from "../pages/HistoryAnalyzer";
 import { GenericButton } from "../components";
 import { filterHistory } from "../history-analyzer/filterHistory";
 import { reduceHistory } from "../history-analyzer/reduceHistory";
+import { motion } from "framer-motion";
 
 const HeaderUpload: React.FC = () => (
   <header className="p-4 text-center">
@@ -16,13 +17,31 @@ const HeaderUpload: React.FC = () => (
 );
 
 const TutorialSlider: React.FC = () => {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(
+      (sliderRef.current?.scrollWidth as number) -
+        (sliderRef.current?.offsetWidth as number)
+    );
+  }, []);
+
   return (
-    <div className="flex overflow-hidden h-[35rem] w-[65rem]">
-      <div className="h-full w-full bg-purple-600 shrink-0"></div>
-      <div className="h-full w-full bg-emerald-600 shrink-0"></div>
-      <div className="h-full w-full bg-sky-600 shrink-0"></div>
-      <div className="h-full w-full bg-green-600 shrink-0"></div>
-    </div>
+    <motion.div className="flex h-[25rem] w-[45rem] overflow-hidden">
+      <motion.div
+        ref={sliderRef}
+        drag="x"
+        whileTap={{ cursor: "grabbing" }}
+        dragConstraints={{ left: -width, right: 0 }}
+        className="flex h-full w-full space-x-5 p-2 hover:cursor-grab"
+      >
+        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-emerald-600"></motion.div>
+        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-sky-600"></motion.div>
+        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-purple-600"></motion.div>
+        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-green-600"></motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

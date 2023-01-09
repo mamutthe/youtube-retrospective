@@ -67,13 +67,9 @@
     pointer-events: none;
   }
 
-  .center-StatsInfoCard-text {
-    margin-left: auto;
-    margin-left: 5rem;
-  }
-
-  .font-roboto {
-
+  .inner-shadow {
+    box-shadow: inset 7px 0 9px -7px rgb(255, 0, 0);
+    box-shadow: inset -7px 0 9px -7px rgb(255, 0, 0);
   }
 
 }
