@@ -1,24 +1,29 @@
 import { BaseCard } from "./BaseCard";
 import { RoundedTransparentCard } from "../RoundedTransparentCard/RoundedTransparentCard";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { channelsWithViewCountTYPE } from "../../types/types";
-import Image from "next/image";
-import { Button } from "flowbite-react";
+import { getMockupData } from "../../history-analyzer/getMockupData";
 
 export function MostWatchedChannelCard() {
   const [mostWatchedChannel, setMostWatchedChannel] =
-    useState<channelsWithViewCountTYPE | null>(null);
+    useState<channelsWithViewCountTYPE>({} as channelsWithViewCountTYPE);
 
-  const [channelThumbnail, setChanneThumbnail] = useState("");
+  /*   const [channelThumbnail, setChanneThumbnail] = useState(""); */
 
-  useEffect(() => {
-    if (window.localStorage.getItem("topChannels") === null) return;
-    setMostWatchedChannel(
-      JSON.parse(window.localStorage.getItem("topChannels") as string)[0]
-    );
+  useLayoutEffect(() => {
+    if (
+      window.localStorage.getItem("topChannels") === null &&
+      window.localStorage.getItem("isGenerated") !== "true"
+    ) {
+      setMostWatchedChannel(getMockupData("mostWatchedChannel"));
+    } else {
+      setMostWatchedChannel(
+        JSON.parse(window.localStorage.getItem("topChannels") as string)[0]
+      );
+    }
   }, []);
 
-  const getThumbnail = async (e: any) => {
+  /*  const getThumbnail = async (e: any) => {
     e.preventDefault();
     let attempts = 0;
     const url =
@@ -41,36 +46,38 @@ export function MostWatchedChannelCard() {
       /\{[^\{\}]*url:\s*"([^"]+)"[^\{\}]*width:\s*176[^\{\}]*height:\s*176[^\{\}]*\}/;
     const match = regex.exec(rawHTML.contents);
     console.log(rawHTML.contents);
-  };
+  }; */
 
   return (
     <div>
-      <BaseCard className="rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-700 px-4">
+      <BaseCard className="bg-gradient-to-r from-indigo-500 to-violet-700 px-4">
         <p className="mt-8 mb-16 text-2xl font-medium text-white ">
           Seu canal favorito deste ano foi
         </p>
 
-        <a
-          href={mostWatchedChannel?.channelTitleUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <RoundedTransparentCard className="mb-12 py-4 rounded-xl border border-white/20 bg-white/20 backdrop-saturate-150">
-            <p className="text-4xl font-bold text-white">
-              {mostWatchedChannel?.channelTitle}
-            </p>
-          </RoundedTransparentCard>
-        </a>
+        <section className="flex flex-col justify-center">
+          <a
+            href={mostWatchedChannel?.channelTitleUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <RoundedTransparentCard className="mb-12 rounded-xl border border-white/20 bg-white/20 py-4 backdrop-saturate-150">
+              <p className="text-4xl font-bold text-white">
+                {mostWatchedChannel?.channelTitle}
+              </p>
+            </RoundedTransparentCard>
+          </a>
 
-        <span className="p-2 text-center text-2xl font-medium text-white">
-          {`Essa foi a quantidade de vídeos diferentes que você assistiu`}
-        </span>
-
-        <RoundedTransparentCard className="mt-3 rounded-xl border border-white/20 bg-white/20 py-2 backdrop-saturate-150">
-          <span className="p-2 text-center text-5xl font-bold text-white">
-            {`${mostWatchedChannel?.count} vídeos`}
+          <span className="p-2 text-center text-2xl font-medium text-white">
+            {`Essa foi a quantidade de vídeos diferentes que você assistiu`}
           </span>
-        </RoundedTransparentCard>
+
+          <RoundedTransparentCard className="mt-3 rounded-xl border border-white/20 bg-white/20 py-2 backdrop-saturate-150">
+            <span className="p-2 text-center text-5xl font-bold text-white">
+              {`${mostWatchedChannel?.count} vídeos`}
+            </span>
+          </RoundedTransparentCard>
+        </section>
       </BaseCard>
     </div>
   );

@@ -3,7 +3,7 @@ import { HistoryContext } from "../../pages/HistoryAnalyzer";
 import { reducedYTVideoTYPE } from "../../types/types";
 import { StoryInfoCard } from "../StoryInfoCard";
 import { ViewCount } from "../ViewCount";
-import { ArrowButton } from "./ArrowButton";
+import { ArrowButton } from "../ArrowButton";
 import { LoadMoreButton } from "./LoadMoreButton";
 import { SearchBar } from "./SearchBar";
 
@@ -47,7 +47,7 @@ export const StatsExplorer = () => {
 
       <ArrowButton
         arrow="down"
-        className="bottom-1 right-6"
+        className="fixed bottom-1 right-6"
         onClick={() =>
           window.scrollTo({
             top: document.body.scrollHeight,
@@ -58,7 +58,7 @@ export const StatsExplorer = () => {
 
       <ArrowButton
         arrow="up"
-        className="bottom-1 right-20"
+        className="fixed bottom-1 right-20"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       />
       <div className="w- flex flex-col space-y-2">

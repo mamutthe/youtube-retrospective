@@ -44,7 +44,7 @@ export function FeaturedStatsCard() {
             info={month[0]}
             textStyle="text-2xl font-bold text-red-800 ml-auto mr-0"
           >
-            <ViewCount className="max-w-[22%] ml-auto mr-0 bg-red-500/20 text-lg font-bold text-red-800">
+            <ViewCount className="ml-auto mr-0 max-w-[22%] bg-red-500/20 text-lg font-bold text-red-800">
               {month[1]}
               <br />
               vídeos
@@ -59,9 +59,10 @@ export function FeaturedStatsCard() {
         info={`${amountOfVideosWatched} vídeos`}
         textStyle="text-2xl font-bold text-red-800"
       ></StoryInfoCard>
-       <p className="text-2xl font-medium text-white">
-        É mais de 8 mil !
-      </p>
+
+      {amountOfVideosWatched > 8000 && (
+        <p className="text-2xl font-medium text-white">É mais de 8 mil !</p>
+      )}
     </BaseCard>
   );
 }

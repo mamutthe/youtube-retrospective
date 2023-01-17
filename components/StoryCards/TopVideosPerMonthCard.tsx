@@ -32,7 +32,6 @@ export function TopVideosPerMonthCard() {
     "Nov",
     "Dez",
   ];
-
   return (
     <BaseCard className="flex flex-col items-center justify-center space-y-2 bg-gradient-to-r from-yellow-300 to-rose-500 px-4 py-1 text-center">
       <span className="mb-1 text-xl font-medium text-white">

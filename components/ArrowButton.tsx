@@ -13,13 +13,13 @@ const ArrowButton = (props: ArrowButtonProps) => {
   const { className, ...otherProps } = props;
   return (
     <button
-      className={`${className} fixed p-2 bg-white/30 border border-white/20 hover:bg-white/40 rounded-full`}
+      className={`${className} p-2 max-h-[2.1rem] bg-white/30 border border-white/20 hover:bg-white/40 rounded-full`}
       {...otherProps}
     >
-      {props.arrow === "up" && <ArrowSmallUpIcon className="w-4 h-4" />}
-      {props.arrow === "down" && <ArrowSmallDownIcon className="w-4 h-4" />}
-      {props.arrow === "left" && <ArrowSmallLeftIcon className="w-4 h-4" />}
-      {props.arrow === "right" && <ArrowSmallRightIcon className="w-4 h-4" />}
+      {props.arrow === "up" && <ArrowSmallUpIcon className="w-4 h-4 text-white/70" />}
+      {props.arrow === "down" && <ArrowSmallDownIcon className="w-4 h-4 text-white/70" />}
+      {props.arrow === "left" && <ArrowSmallLeftIcon className="w-4 h-4 text-white/70" />}
+      {props.arrow === "right" && <ArrowSmallRightIcon className="w-4 h-4 text-white/70" />}
 
     </button>
   );

@@ -6,7 +6,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- /*  border: 1px solid red; */
+/*   border: 1px solid red; */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800;900;1000&display=swap');
+
+body{
+  @apply bg-zinc-900
 }
 
 @keyframes animate-gradient {
@@ -24,8 +30,6 @@
 @layer components {
   .blue-gradient {
     background: linear-gradient(-45deg, #34d399, #0694a2);
-    background-size: 400% 400%;
-    animation: animate-gradient 15s ease infinite;
   }
 
   .purple-gradient {
@@ -67,9 +71,8 @@
     pointer-events: none;
   }
 
-  .inner-shadow {
-    box-shadow: inset 7px 0 9px -7px rgb(255, 0, 0);
-    box-shadow: inset -7px 0 9px -7px rgb(255, 0, 0);
+  .story-card-size {
+    @apply
   }
 
 }

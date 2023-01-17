@@ -6,10 +6,7 @@ module.exports = {
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
-    extend: {},
-    fontFamily: {
-      'roboto': ['Roboto', 'sans-serif']
-    }
+    extend: {}
   },
   plugins: [ require('flowbite/plugin')],
   safelist:[

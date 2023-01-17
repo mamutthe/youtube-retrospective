@@ -9,10 +9,10 @@ type GradientButtonTYPE = {
 
 export const GradientButton: React.FC<GradientButtonTYPE> = (props) => {
   return (
-    <div className={`pseudo-glow ${props.beforeClassName}`}>
+    <div className={`pseudo-glow w-64 ${props.beforeClassName}`}>
       <button
         {...props}
-        className={`${props.className} h-14 w-64 rounded-lg bg-slate-100 text-lg font-medium text-slate-900 transition-all duration-100 ease-in-out`}
+        className={`${props.className} relative h-14 w-64 rounded-lg bg-slate-100 text-lg font-semibold text-slate-900 transition-all duration-100 ease-in-out`}
       ></button>
     </div>
   );

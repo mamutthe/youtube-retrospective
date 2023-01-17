@@ -3,6 +3,7 @@ import { BaseCard } from "./BaseCard";
 import { ViewCount } from "../ViewCount";
 import { StoryInfoCard } from "../StoryInfoCard";
 import { reducedHistoryTYPE, reducedYTVideoTYPE } from "../../types/types";
+import { getMockupData } from "../../history-analyzer/getMockupData";
 
 export function TopVideosCard() {
   const [topVideos, setTopVideos] = useState<reducedHistoryTYPE>(
@@ -10,12 +11,16 @@ export function TopVideosCard() {
   );
 
   useEffect(() => {
-    if (window.localStorage.getItem("topVideos") === null) {
-      throw new Error("topVideos: no topVideos in localStorage");
+    if (
+      window.localStorage.getItem("topVideos") === null &&
+      window.localStorage.getItem("isGenerated") !== "true"
+    ) {
+      setTopVideos(getMockupData("topVideos"));
+    } else {
+      setTopVideos(
+        JSON.parse(window.localStorage.getItem("topVideos") as string)
+      );
     }
-    setTopVideos(
-      JSON.parse(window.localStorage.getItem("topVideos") as string)
-    );
   }, []);
 
   return (
@@ -23,6 +28,7 @@ export function TopVideosCard() {
       <span className="mt-4 text-2xl font-medium text-white">
         Seus vídeos mais assistidos deste ano foram
       </span>
+      <div className="py-2 flex flex-col w-full h-full space-y-2">
       {topVideos.map((video: reducedYTVideoTYPE) => (
         <StoryInfoCard
           key={video.title}
@@ -39,6 +45,7 @@ export function TopVideosCard() {
           </ViewCount>
         </StoryInfoCard>
       ))}
+      </div>
     </BaseCard>
   );
 }

@@ -1,29 +1,16 @@
 import React from "react";
 
-type ButtonProps = {
-  children?: React.ReactNode;
-  id?: string;
-  className?: string;
-  onClick?: (e: any) => void;
-} & React.DetailedHTMLProps<
-React.ButtonHTMLAttributes<HTMLButtonElement>,
-HTMLButtonElement
+type GenericButtonTYPE = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
 >;
 
-export const GenericButton: React.FC<ButtonProps> = ({
-  children,
-  id,
-  className,
-  onClick,
-}) => {
+export const GenericButton: React.FC<GenericButtonTYPE> = (props) => {
   return (
     <button
-      id={id}
-      className={`hover:shadow-slate-600/30 rounded-lg h-12 shadow-lg shadow-slate-600/20 text-white text-lg font-medium flex items-center justify-center ${className}`}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+      {...props}
+      className={`${props.className} h-14 w-64 rounded-lg border border-white/50 bg-white/20 text-lg font-semibold text-slate-200 transition-all duration-75 ease-linear hover:bg-white hover:text-slate-900 active:bg-white`}
+    ></button>
   );
 };
 

@@ -85,7 +85,7 @@ function removeExtraInfoFromMusicVideos(history: historyTYPE): historyTYPE {
     if (ytVideo.title.startsWith("Watched", 0)) {
       ytVideo.title = ytVideo.title.replace("Watched", "");
       ytVideo.subtitles[0].name = ytVideo.subtitles[0].name.replace(
-        "- Topic",
+        " - Topic",
         ""
       );
       return ytVideo;

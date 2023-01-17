@@ -1,51 +1,21 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-import { GradientButton } from "../components";
+import { GradientButton } from "../GradientButton";
 import { useRouter } from "next/router";
 import { Spinner } from "flowbite-react";
-import { HistoryContext } from "../pages/HistoryAnalyzer";
-import { GenericButton } from "../components";
-import { filterHistory } from "../history-analyzer/filterHistory";
-import { reduceHistory } from "../history-analyzer/reduceHistory";
+import { HistoryContext } from "../../pages/HistoryAnalyzer";
+import { GenericButton } from "../GenericButton";
+import { filterHistory } from "../../history-analyzer/filterHistory";
+import { reduceHistory } from "../../history-analyzer/reduceHistory";
+import TutorialSlider from "./TutorialSlider";
 import { motion } from "framer-motion";
 
 const HeaderUpload: React.FC = () => (
-  <header className="p-4 text-center">
-    <h1 className="orange-gradient bg-clip-text text-7xl font-extrabold text-transparent">
-      Temos um header aqui
-    </h1>
+  <header className="text-center">
+    <h1 className="text-medium text-2xl text-slate-200">Siga o tutorial</h1>
   </header>
 );
 
-const TutorialSlider: React.FC = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    setWidth(
-      (sliderRef.current?.scrollWidth as number) -
-        (sliderRef.current?.offsetWidth as number)
-    );
-  }, []);
-
-  return (
-    <motion.div className="flex h-[25rem] w-[45rem] overflow-hidden">
-      <motion.div
-        ref={sliderRef}
-        drag="x"
-        whileTap={{ cursor: "grabbing" }}
-        dragConstraints={{ left: -width, right: 0 }}
-        className="flex h-full w-full space-x-5 p-2 hover:cursor-grab"
-      >
-        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-emerald-600"></motion.div>
-        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-sky-600"></motion.div>
-        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-purple-600"></motion.div>
-        <motion.div className="h-full w-full shrink-0 rounded-3xl bg-green-600"></motion.div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-const UploadAndCostumize: React.FC<{
+const BrowseFile: React.FC<{
   handleUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   uploadButtonState: { status: string; isDisabled: boolean };
 }> = ({ handleUpload, uploadButtonState }) => {
@@ -57,7 +27,7 @@ const UploadAndCostumize: React.FC<{
   };
 
   return (
-    <div className="flex w-[25%] flex-row items-center justify-between">
+    <>
       <input
         type="file"
         id="ytHistory"
@@ -69,7 +39,6 @@ const UploadAndCostumize: React.FC<{
       <GradientButton
         id="uploadButton"
         beforeClassName={`before:orange-gradient`}
-        className="relative"
         onClick={ytHistoryInputClick}
         disabled={uploadButtonState.isDisabled}
       >
@@ -79,10 +48,7 @@ const UploadAndCostumize: React.FC<{
           uploadButtonState.status
         )}
       </GradientButton>
-      <GenericButton className="w-[8.8rem] bg-green-500">
-        Costumize
-      </GenericButton>
-    </div>
+    </>
   );
 };
 
@@ -95,38 +61,47 @@ const ViewStats: React.FC<{
 
   if (isGenerated) {
     return (
-      <>
-        <GenericButton
-          className="blue-gradient w-[85%] lg:w-[25%]"
+      <div className="flex flex-row space-x-6">
+        <GradientButton
+          beforeClassName={`before:purple-gradient`}
           onClick={() => router.push("/Storys")}
         >
-          View Stories
-        </GenericButton>
+          Ver retrospectiva
+        </GradientButton>
 
-        <GenericButton
-          className="w-[85%] bg-blue-500 lg:w-[25%]"
+        <GradientButton
+          beforeClassName={`before:purple-gradient`}
           onClick={handleExplore}
         >
-          Explore
-        </GenericButton>
-      </>
+          Exporar estatísticas
+        </GradientButton>
+      </div>
     );
   } else {
     return (
-      <GradientButton
-        className="blue-gradient w-[85%] lg:w-[25%]"
-        onClick={() => {
-          handleGenerate();
-          setIsGenerated(true);
-        }}
-      >
-        Generate
-      </GradientButton>
+      <div className="flex flex-row space-x-2">
+        <GradientButton
+          id="generateButton"
+          beforeClassName={`before:blue-gradient`}
+          onClick={() => {
+            handleGenerate();
+            setIsGenerated(true);
+          }}
+        >
+          Gerar retrospectiva
+        </GradientButton>
+        <GradientButton
+          id="generateButton"
+          beforeClassName={`before:blue-gradient`}
+        >
+          Escolha o ano
+        </GradientButton>
+      </div>
     );
   }
 };
 
-export const HistoryUpload: React.FC = () => {
+export const UploadHistory: React.FC = () => {
   const [uploadButtonState, setUploadButtonState] = useState({
     status: "Selecione seu arquivo...",
     isDisabled: false,
@@ -155,7 +130,7 @@ export const HistoryUpload: React.FC = () => {
         setReducedHistory(reduceHistory(filteredHistory));
         setUploadButtonState((prevState) => ({
           ...prevState,
-          status: "Upload concluído!",
+          status: "done",
         }));
       } catch (error) {
         setUploadButtonState({
@@ -171,9 +146,9 @@ export const HistoryUpload: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center bg-zinc-900">
+    <div className="flex flex-col justify-center items-center space-y-3">
       <HeaderUpload />
-
+      <TutorialSlider />
       {uploadButtonState.status === "done" ? (
         <ViewStats
           handleExplore={handleExplore}
@@ -181,8 +156,7 @@ export const HistoryUpload: React.FC = () => {
         />
       ) : (
         <>
-          <TutorialSlider />
-          <UploadAndCostumize
+          <BrowseFile
             handleUpload={handleUpload}
             uploadButtonState={uploadButtonState}
           />

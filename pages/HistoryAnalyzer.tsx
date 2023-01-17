@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { historyTYPE, reducedHistoryTYPE } from "../types/types";
-import { GradientButton } from "../components";
-import { HistoryUpload } from "../components";
+import { GradientButton, UploadHistory } from "../components";
 import { StatsExplorer } from "../components";
 import { getTopChannels } from "../history-analyzer/getTopChannels";
 import { getTopVideos } from "../history-analyzer/getTopVideos";
@@ -38,6 +37,8 @@ const HistoryAnalyzer: React.FC = () => {
     getAmountOfVideosWatched(history as historyTYPE);
 
     getTopChannels(reducedHistory as reducedHistoryTYPE);
+
+    window.localStorage.setItem("isGenerated", "true");
   };
 
   const handleExplore = () => {
@@ -54,7 +55,9 @@ const HistoryAnalyzer: React.FC = () => {
         handleExplore,
       }}
     >
-      <div>{isExplore ? <StatsExplorer /> : <HistoryUpload />}</div>
+      <div className="flex min-h-screen flex-col justify-center bg-zinc-900 p-4">
+        {isExplore ? <StatsExplorer /> : <UploadHistory />}
+      </div>
     </HistoryContext.Provider>
   );
 };

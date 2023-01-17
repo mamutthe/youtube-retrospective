@@ -39,16 +39,16 @@ export const StoryInfoCard: React.FC<StoryInfoCardTYPE> = ({
 }) => {
   return (
     <a
-      className="w-full"
+      className="h-full w-full"
       href={link}
       target="_blank"
       rel="noreferrer"
       {...rest}
     >
       <RoundedTransparentCard
-        className={`${className} h-[4.5rem] w-full rounded-2xl overflow-hidden border border-white/30`}
+        className={`${className} h-full md:h-[3.5rem] w-full rounded-2xl overflow-hidden border border-white/30`}
       >
-        <span className={`${textStyle} font-medium`}>
+        <span className={`${textStyle} font-bold md:font-medium`}>
           {info} <br/> {extraInfo}
         </span>
         {children}
