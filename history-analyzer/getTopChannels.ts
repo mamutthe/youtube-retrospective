@@ -1,10 +1,11 @@
-import { reducedHistoryTYPE, topChannelsTYPE } from "../types/types";
+import { reducedHistoryTYPE, topChannelsTYPE } from '../types/types';
 
 export const getTopChannels = (
-  reducedHistory: reducedHistoryTYPE
+  reducedHistory: reducedHistoryTYPE,
+  listSize: number
 ) => {
   if (!reducedHistory) {
-    throw new Error("getTopChannels: reducedHistory is undefined");
+    throw new Error('getTopChannels: reducedHistory is undefined');
   }
 
   //Gera um objeto que contém
@@ -28,7 +29,7 @@ export const getTopChannels = (
     (a: any, b: any) => b.count - a.count
   );
 
-  sortedTopChannels.length = 8;
+  sortedTopChannels.length = listSize;
 
-  window.localStorage.setItem("topChannels", JSON.stringify(sortedTopChannels));
+  window.localStorage.setItem('topChannels', JSON.stringify(sortedTopChannels));
 };

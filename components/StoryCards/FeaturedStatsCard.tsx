@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { BaseCard } from "./BaseCard";
-import { StoryInfoCard } from "../StoryInfoCard";
-import { ViewCount } from "../ViewCount";
-import { videosWatchedPerMonthTYPE } from "../../types/types";
+import React, { useEffect, useState } from 'react';
+import { BaseCard } from './BaseCard';
+import { StoryInfoCard } from '../StoryInfoCard';
+import { ViewCount } from '../ViewCount';
+import { videosWatchedPerMonthTYPE } from '../../types/types';
 
 export function FeaturedStatsCard() {
   const [videosWatchedPerMonth, setVideosWatchedPerMonth] =
@@ -10,30 +10,30 @@ export function FeaturedStatsCard() {
   const [amountOfVideosWatched, setAmountOfVideosWatched] = useState<number>(0);
 
   useEffect(() => {
-    if (window.localStorage.getItem("videosWatchedPerMonth") === null) {
+    if (window.localStorage.getItem('videosWatchedPerMonth') === null) {
       throw new Error(
-        "FeaturedStatsCard|videosWatchedPerMonth: no data found in localStorage"
+        'FeaturedStatsCard|videosWatchedPerMonth: no data found in localStorage'
       );
     }
 
-    if (window.localStorage.getItem("amountOfVideosWatched") === null) {
+    if (window.localStorage.getItem('amountOfVideosWatched') === null) {
       throw new Error(
-        "FeaturedStatsCard|amountOfVideosWatched: no data found in localStorage"
+        'FeaturedStatsCard|amountOfVideosWatched: no data found in localStorage'
       );
     }
 
     setAmountOfVideosWatched(
-      JSON.parse(window.localStorage.getItem("amountOfVideosWatched") as string)
+      JSON.parse(window.localStorage.getItem('amountOfVideosWatched') as string)
     );
 
     setVideosWatchedPerMonth(
-      JSON.parse(window.localStorage.getItem("videosWatchedPerMonth") as string)
+      JSON.parse(window.localStorage.getItem('videosWatchedPerMonth') as string)
     );
   }, []);
 
   return (
-    <BaseCard className="flex flex-col items-center space-y-4 bg-gradient-to-r from-red-500 to-red-700 px-4 py-1 text-center">
-      <p className="mt-4 mb-5 text-center text-2xl font-medium text-white">
+    <BaseCard className="flex flex-col items-center space-y-4 bg-gradient-to-r from-red-500 to-red-700 px-4 py-8 text-center">
+      <p className="text-center text-2xl font-medium text-white md:font-bold">
         Estes foram os meses em que você mais assistiu
       </p>
       {Object.entries(videosWatchedPerMonth)
@@ -52,7 +52,7 @@ export function FeaturedStatsCard() {
           </StoryInfoCard>
         ))}
 
-      <p className="text-xl font-medium text-white">
+      <p className="text-xl font-medium text-white  md:font-bold">
         {`Essa foi a quantidade de vídeos que você viu este ano`}
       </p>
       <StoryInfoCard
@@ -61,7 +61,9 @@ export function FeaturedStatsCard() {
       ></StoryInfoCard>
 
       {amountOfVideosWatched > 8000 && (
-        <p className="text-2xl font-medium text-white">É mais de 8 mil !</p>
+        <p className="text-2xl font-medium text-white  md:font-bold">
+          É mais de 8 mil !
+        </p>
       )}
     </BaseCard>
   );

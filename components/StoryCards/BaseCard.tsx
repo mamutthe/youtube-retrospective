@@ -9,7 +9,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({ className, children }) => {
   return (
     <>
       <div
-        className={`flex h-[36rem] w-full flex-col overflow-hidden text-center md:h-[38.5rem] md:w-[22rem] ${className}`}
+        className={`relative flex h-full w-full flex-col overflow-hidden text-center ${className}`}
       >
         {children}
       </div>

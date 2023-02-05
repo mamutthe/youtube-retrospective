@@ -41,17 +41,12 @@ const mockupData:any = {
       count: 61,
       channelTitle: "MrBeast",
       channelTitleUrl: "https://www.youtube.com/user/MrBeast6000",
-    },
-    {
-      count: 54,
-      channelTitle: "Coisa de Nerd",
-      channelTitleUrl: "https://www.youtube.com/user/coisadenerd",
-    },
+    }
   ],
   topVideos:[
     {
       "header": "YouTube Music",
-      "title": " Vogue",
+      "title": "Vogue",
       "titleUrl": "https://www.youtube.com/watch?v=ydFYm-oomec",
       "channelTitle": "Madonna",
       "channelTitleUrl": "https://www.youtube.com/channel/UCo4CrqhIV_tSOGdDWfVyCsg",
@@ -60,7 +55,7 @@ const mockupData:any = {
     },
     {
       "header": "YouTube Music",
-      "title": " Physical",
+      "title": "Physical",
       "titleUrl": "https://www.youtube.com/watch?v=Yegn0dZ-BfY",
       "channelTitle": "Dua Lipa",
       "channelTitleUrl": "https://www.youtube.com/channel/UCzVb0SIXp9q9PeKCcFjsBtA",
@@ -71,7 +66,7 @@ const mockupData:any = {
     },
     {
       "header": "YouTube Music",
-      "title": " Like a Prayer",
+      "title": "Like a Prayer",
       "titleUrl": "https://www.youtube.com/watch?v=ilottRbDnGY",
       "channelTitle": "Madonna",
       "channelTitleUrl": "https://www.youtube.com/channel/UCo4CrqhIV_tSOGdDWfVyCsg",
@@ -82,7 +77,7 @@ const mockupData:any = {
     },
     {
       "header": "YouTube",
-      "title": " Papa Don't Preach",
+      "title": "Papa Don't Preach",
       "titleUrl": "https://www.youtube.com/watch?v=6CuZARbr8o4",
       "channelTitle": "Madonna",
       "channelTitleUrl": "https://www.youtube.com/channel/UCo4CrqhIV_tSOGdDWfVyCsg",
@@ -93,7 +88,7 @@ const mockupData:any = {
     },
     {
       "header": "YouTube Music",
-      "title": " Running Up That Hill (A Deal With God)",
+      "title": "Running Up That Hill (A Deal With God)",
       "titleUrl": "https://www.youtube.com/watch?v=8rIjsa85UVk",
       "channelTitle": "Kate Bush",
       "channelTitleUrl": "https://www.youtube.com/channel/UCvwgfsD0OaWx0HJRExrE6uQ",
@@ -104,13 +99,19 @@ const mockupData:any = {
     },
     {
       "header": "YouTube Music",
-      "title": " You Keep Me Hangin On",
+      "title": "You Keep Me Hangin On",
       "titleUrl": "https://www.youtube.com/watch?v=JoO7opqXMhk",
       "channelTitle": "Kim Wilde",
       "channelTitleUrl": "https://www.youtube.com/channel/UCE7vpq-DUtyMpQUzec9GA0g",
       "time": [
        ""
       ],
+      "views": 29
+    },
+    {
+      "title": "Radio Ga Ga",
+      "titleUrl": "https://www.youtube.com/watch?v=azdwsXLmrHE",
+      "channelTitleUrl": "https://www.youtube.com/channel/UCE7vpq-DUtyMpQUzec9GA0g",
       "views": 29
     }
   ]

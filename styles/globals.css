@@ -6,13 +6,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-/*   border: 1px solid red; */
+  /*border: 1px solid red;*/
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800;900;1000&display=swap');
+:root {
+  --basecard-lg-height: 39.5rem;
+}
 
-body{
-  @apply bg-zinc-900
+body {
+  @apply gray-background overflow-x-hidden;
 }
 
 @keyframes animate-gradient {
@@ -45,7 +47,7 @@ body{
   }
 
   .pseudo-glow {
-    @apply relative before:absolute before:inset-2 before:block before:blur-lg before:transition-all before:duration-75 before:ease-in-out before:hover:blur-xl;
+    @apply relative before:absolute before:block before:blur-[12px] before:transition-all before:duration-75 before:ease-in-out before:hover:blur-[15px];
   }
 
   .animate-purple-gradient {
@@ -54,13 +56,14 @@ body{
   }
 
   .colorful-gradient {
+    @apply min-h-screen;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 100% 100%;
     animation: animate-gradident 1s ease infinite;
   }
 
   .colorful-gradient::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -71,8 +74,25 @@ body{
     pointer-events: none;
   }
 
-  .story-card-size {
-    @apply
+  .gray-background {
+    @apply bg-zinc-900;
+    background-size: cover;
   }
 
+  .gray-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .nav-circle {
+    @apply relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/5 hover:bg-white/10;
+  }
 }
