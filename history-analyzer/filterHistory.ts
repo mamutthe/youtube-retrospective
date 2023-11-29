@@ -1,7 +1,7 @@
 import { historyTYPE, ytVideoTYPE } from "../types/types";
 
 // Constante para armazenar o ano atual
-const currentYear = 2022;
+const currentYear = 2023;
 
 /**
  * @description Filtrar o histórico pelo ano especificado.
